@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../config/supabaseClient';
+import '../styles/updatecrypto.css';
 
 const CryptoUpdate = () => {
   const [cryptoUpdate, setCryptoUpdate] = useState({
