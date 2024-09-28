@@ -32,7 +32,7 @@ const ViewCrypto = () => {
 
   return (
     <div className="crypto-container">
-      <h2>Cryptos Available</h2>
+      <h2>View Cryptos Available</h2>
       <div className="search-container">
         <input
           type="text"
