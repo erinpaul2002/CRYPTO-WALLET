@@ -9,7 +9,10 @@
   header {
     background-color: #000000;
     color: rgb(230, 6, 6);
-    padding: 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0%;
   }
   
   .navbar {

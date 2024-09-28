@@ -36,27 +36,40 @@ const AdminDash = ({ token }) => {
   };
 
   return (
-    <div>
-      <header>
-        <nav>
-          <div className="navbar">
-            <h1>ADMIN DASHBOARD</h1>
-            <div className="nav-links">
-              
-              
-              <a href="#add-crypto" onClick={() => setActiveComponent('add')}>Add Crypto</a>
-              <a href="#view-crypto" onClick={() => setActiveComponent('view')}>View Crypto</a>
-              <a href="#update-crypto" onClick={() => setActiveComponent('update')}>Update Crypto</a>
-              <a href="#delete-crypto" onClick={() => setActiveComponent('delete')}>Delete Crypto</a>
-              <button id="#logout" onClick={handleLogout}>Logout</button>
-            </div>
+<div>
+    <header>
+      <nav style={{position:'fixed',width:'99%'}}>
+        <div className="navbar">
+          <h1>ADMIN DASHBOARD</h1>
+          <div className="nav-links">
+            {/* <a href="#manage-users">Manage Users</a> */}
+            <a href="#update-crypto">Update Crypto</a>
+            <a href="#view-crypto">View Crypto</a>
+            <a href="#add-crypto">Add Crypto</a>
+            <a href="#delete-crypto">Delete Crypto</a>
+            <button id="#logout" onClick={handleLogout}>Logout</button>
           </div>
-        </nav>
-      </header>
-      <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '10% 0 0 0' }}>
-        {renderComponent()} 
-      </div>
-    </div>
+        </div>
+      </nav>
+    </header>
+<div id="update-crypto" style={{display:'flex',justifyContent:'space-evenly',alignItems:'center',margin:'10% 0 0 0'}}>
+  <UpdateCrypto />
+</div>
+<div id="view-crypto"style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+  <ViewCrypto />
+</div>
+<div id="add-crypto"style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+  <AddCrypto />
+</div>
+<div id="delete-crypto"style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+  <DeleteCrypto />
+</div>
+
+</div>
+  
+  
+
+
   );
 };
 
