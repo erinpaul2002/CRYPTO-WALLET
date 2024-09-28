@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { supabase } from '../config/supabaseClient';
 import '../styles/viewcrypto.css';
 
@@ -45,13 +44,13 @@ const ViewCrypto = () => {
         <button className="search-button" onClick={handleSearch}>Search</button>
       </div>
       {cryptos.length > 0 && (
-        <div className="crypto-list">
+        <div className="crypto-grid">
           {cryptos.map((crypto, index) => (
-            <div key={index} className="crypto-item">
-              <p>Name: {crypto.cryptoname}</p>
-              <p>Symbol: {crypto.symbol}</p>
-              <p>Price: ${crypto.cryptoprice}</p>
-              <p>MarketCap: {crypto.marketcap}</p>
+            <div key={index} className="crypto-card">
+              <p className="crypto-name">Name: {crypto.cryptoname}</p>
+              <p className="crypto-symbol">Symbol: {crypto.symbol}</p>
+              <p className="crypto-price">Price: ${crypto.cryptoprice}</p>
+              <p className="crypto-marketcap">MarketCap: {crypto.marketcap}</p>
             </div>
           ))}
         </div>

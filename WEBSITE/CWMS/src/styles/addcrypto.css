@@ -2,17 +2,14 @@
 
 .add-crypto-container {
   max-width: 450px;
+  margin: 40px auto;
   padding: 30px;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
+  text-align: center;
 }
 
 .add-crypto-container:hover {
@@ -25,7 +22,6 @@
   margin-bottom: 20px;
   color: #333;
   font-weight: bold;
-  text-align: center;
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
@@ -33,10 +29,11 @@
 .add-crypto-fields {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .add-crypto-fields input {
+  width: 100%;
   padding: 12px;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -50,6 +47,9 @@
 }
 
 .add-crypto-fields button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(135deg, #4caf50, #45a049);
   color: white;
   padding: 12px;
@@ -67,5 +67,46 @@
 
 .add-crypto-fields button:active {
   background: linear-gradient(135deg, #3e8e41, #367c39);
+  transform: translateY(0);
+}
+
+.status-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.success-icon {
+  font-size: 3rem;
+  color: #4caf50;
+}
+
+.error-icon {
+  color: #f44336;
+  font-size: 3rem;
+}
+
+.reset-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.reset-button:hover {
+  background: linear-gradient(135deg, #0056b3, #004494);
+  transform: translateY(-2px);
+}
+
+.reset-button:active {
+  background: linear-gradient(135deg, #004494, #003366);
   transform: translateY(0);
 }

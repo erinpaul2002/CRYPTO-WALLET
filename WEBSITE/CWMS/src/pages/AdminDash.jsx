@@ -44,10 +44,10 @@ const AdminDash = ({ token }) => {
             <div className="nav-links">
               
               
-              <a href="#add-crypto" onClick={() => setActiveComponent('add')}>Add Crypto</a>
-              <a href="#view-crypto" onClick={() => setActiveComponent('view')}>View Crypto</a>
-              <a href="#update-crypto" onClick={() => setActiveComponent('update')}>Update Crypto</a>
-              <a href="#delete-crypto" onClick={() => setActiveComponent('delete')}>Delete Crypto</a>
+              <a  onClick={() => setActiveComponent('add')}>Add Crypto</a>
+              <a  onClick={() => setActiveComponent('view')}>View Crypto</a>
+              <a  onClick={() => setActiveComponent('update')}>Update Crypto</a>
+              <a  onClick={() => setActiveComponent('delete')}>Delete Crypto</a>
               <button id="#logout" onClick={handleLogout}>Logout</button>
             </div>
           </div>

@@ -1,10 +1,8 @@
-
 /* eslint-disable no-unused-vars */
-
-
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../config/supabaseClient';
 import '../styles/updatecrypto.css';
+import { FaCheckCircle, FaTimesCircle, FaSyncAlt } from 'react-icons/fa';
 
 const CryptoUpdate = () => {
   const [cryptoUpdate, setCryptoUpdate] = useState({
@@ -14,13 +12,14 @@ const CryptoUpdate = () => {
   });
 
   const [cryptoList, setCryptoList] = useState([]);
+  const [status, setStatus] = useState(null);
 
   useEffect(() => {
     async function fetchCryptoList() {
       try {
         const { data, error } = await supabase
           .from('cryptocurrency')
-          .select('cryptoid, cryptoname,marketcap');
+          .select('cryptoid, cryptoname, marketcap');
 
         if (error) {
           throw error;
@@ -58,40 +57,64 @@ const CryptoUpdate = () => {
         throw error;
       }
 
+      setStatus({ success: true, message: 'Cryptocurrency data updated successfully' });
       console.log('Cryptocurrency data updated:', data);
     } catch (error) {
+      setStatus({ success: false, message: `Error updating cryptocurrency data: ${error.message}` });
       console.error('Error updating cryptocurrency data:', error.message);
     }
   };
 
+  const handleReset = () => {
+    setCryptoUpdate({
+      cryptoid: '',
+      cryptoprice: '',
+      marketcap: '',
+    });
+    setStatus(null);
+  };
+
   return (
-    <div className="crypto-update-container">
-      <h2>Update Cryptocurrency Data</h2>
-      <div className="update-fields">
-        <select name="cryptoid" onChange={handleChange} value={cryptoUpdate.cryptoid}>
-          <option value="">Select a cryptocurrency</option>
-          {cryptoList.map((crypto) => (
-            <option key={crypto.cryptoid} value={crypto.cryptoid}>
-              {crypto.cryptoname}
-            </option>
-          ))}
-        </select>
-        <input
-          type="text"
-          name="cryptoprice"
-          value={cryptoUpdate.cryptoprice}
-          onChange={handleChange}
-          placeholder="Enter Cryptoprice"
-        />
-        <input
-          type="text"
-          name="marketcap"
-          value={cryptoUpdate.marketcap}
-          onChange={handleChange}
-          placeholder="Enter Market Cap"
-        />
-        <button onClick={handleUpdate}>Update</button>
-      </div>
+    <div className={`crypto-update-container ${status ? (status.success ? 'success' : 'error') : ''}`}>
+      {status ? (
+        <div className={`status-message ${status.success ? '' : 'error'}`}>
+          {status.success ? <FaCheckCircle className="success-icon" /> : <FaTimesCircle className="error-icon" />}
+          <span>{status.message}</span>
+          <button className="reset-button" onClick={handleReset}>
+            <FaSyncAlt style={{ marginRight: '8px' }} />
+            Update Another Cryptocurrency
+          </button>
+        </div>
+      ) : (
+        <>
+          <h2>Update Cryptocurrency Data</h2>
+          <div className="update-fields">
+            <select name="cryptoid" onChange={handleChange} value={cryptoUpdate.cryptoid}>
+              <option value="">Select a cryptocurrency</option>
+              {cryptoList.map((crypto) => (
+                <option key={crypto.cryptoid} value={crypto.cryptoid}>
+                  {crypto.cryptoname}
+                </option>
+              ))}
+            </select>
+            <input
+              type="text"
+              name="cryptoprice"
+              value={cryptoUpdate.cryptoprice}
+              onChange={handleChange}
+              placeholder="Enter Cryptoprice"
+            />
+            <input
+              type="text"
+              name="marketcap"
+              value={cryptoUpdate.marketcap}
+              onChange={handleChange}
+              placeholder="Enter Market Cap"
+            />
+            <button onClick={handleUpdate}>Update</button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
