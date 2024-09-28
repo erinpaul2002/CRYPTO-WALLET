@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { supabase } from '../config/supabaseClient';
+import '../styles/addcrypto.css';
 
 const AddCrypto = () => {
   const [newCrypto, setNewCrypto] = useState({

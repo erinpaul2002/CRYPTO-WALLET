@@ -1,43 +1,71 @@
 /* AddCrypto.css */
 
 .add-crypto-container {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .add-crypto-container h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-  }
-  
-  .add-crypto-fields {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .add-crypto-fields input {
-    margin-bottom: 10px;
-    padding: 8px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .add-crypto-fields button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .add-crypto-fields button:hover {
-    background-color: #45a049;
-  }
-  
+  max-width: 450px;
+  padding: 30px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.add-crypto-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.add-crypto-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.add-crypto-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-crypto-fields input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-crypto-fields input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+.add-crypto-fields button {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.add-crypto-fields button:hover {
+  background: linear-gradient(135deg, #45a049, #3e8e41);
+  transform: translateY(-2px);
+}
+
+.add-crypto-fields button:active {
+  background: linear-gradient(135deg, #3e8e41, #367c39);
+  transform: translateY(0);
+}

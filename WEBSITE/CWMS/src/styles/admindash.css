@@ -22,8 +22,14 @@
     color: white;
     text-decoration: none;
     margin-right: 20px;
+    transition: color 0.3s ease;
   }
-  
+
+  .nav-links a:hover {
+    color: #ffcc00;
+  }
+
+   
   #logout button {
     background-color: #0077ff;
     color: white;
@@ -38,3 +44,20 @@
     transition: ease-in-out;
   }
   
+  .container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 10% 0 0 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+  }
+  
+  .container:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
