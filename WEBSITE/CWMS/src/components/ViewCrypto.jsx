@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../config/supabaseClient';
 import '../styles/viewcrypto.css';
+import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner component
 
 const ViewCrypto = () => {
   const [cryptos, setCryptos] = useState([]);
   const [selectedCrypto, setSelectedCrypto] = useState('');
+  const [loading, setLoading] = useState(false); // Add loading state
 
   useEffect(() => {
     const fetchCryptos = async () => {
+      setLoading(true); // Set loading to true before API call
       try {
         const { data, error } = await supabase
           .from('cryptocurrency')
@@ -20,6 +23,8 @@ const ViewCrypto = () => {
         setCryptos(data);
       } catch (error) {
         console.error('Error fetching cryptocurrency data:', error.message);
+      } finally {
+        setLoading(false); // Set loading to false after API call
       }
     };
 
@@ -51,17 +56,21 @@ const ViewCrypto = () => {
           ))}
         </select>
       </div>
-      {filteredCryptos.length > 0 && (
-        <div className="crypto-grid">
-          {filteredCryptos.map((crypto, index) => (
-            <div key={index} className="crypto-card">
-              <p className="crypto-name">Name: {crypto.cryptoname}</p>
-              <p className="crypto-symbol">Symbol: {crypto.symbol}</p>
-              <p className="crypto-price">Price: ${crypto.cryptoprice}</p>
-              <p className="crypto-supply">Supply: {crypto.supply}</p>
-            </div>
-          ))}
-        </div>
+      {loading ? (
+        <LoadingSpinner /> // Conditionally render the loading spinner
+      ) : (
+        filteredCryptos.length > 0 && (
+          <div className="crypto-grid">
+            {filteredCryptos.map((crypto, index) => (
+              <div key={index} className="crypto-card">
+                <p className="crypto-name">Name: {crypto.cryptoname}</p>
+                <p className="crypto-symbol">Symbol: {crypto.symbol}</p>
+                <p className="crypto-price">Price: ${crypto.cryptoprice}</p>
+                <p className="crypto-supply">Supply: {crypto.supply}</p>
+              </div>
+            ))}
+          </div>
+        )
       )}
     </div>
   );

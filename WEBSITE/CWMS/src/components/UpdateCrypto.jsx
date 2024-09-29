@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../config/supabaseClient';
 import '../styles/updatecrypto.css';
 import { FaCheckCircle, FaTimesCircle, FaSyncAlt } from 'react-icons/fa';
+import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner component
 
 const CryptoUpdate = () => {
   const [cryptoUpdate, setCryptoUpdate] = useState({
@@ -13,9 +14,11 @@ const CryptoUpdate = () => {
 
   const [cryptoList, setCryptoList] = useState([]);
   const [status, setStatus] = useState(null);
+  const [loading, setLoading] = useState(false); // Add loading state
 
   useEffect(() => {
     async function fetchCryptoList() {
+      setLoading(true); // Set loading to true before API call
       try {
         const { data, error } = await supabase
           .from('cryptocurrency')
@@ -28,6 +31,8 @@ const CryptoUpdate = () => {
         setCryptoList(data);
       } catch (error) {
         console.error('Error fetching crypto list:', error.message);
+      } finally {
+        setLoading(false); // Set loading to false after API call
       }
     }
 
@@ -43,6 +48,7 @@ const CryptoUpdate = () => {
   };
 
   const handleUpdate = async () => {
+    setLoading(true); // Set loading to true before API call
     try {
       // Fetch the current values from the database
       const { data: currentData, error: fetchError } = await supabase
@@ -76,6 +82,8 @@ const CryptoUpdate = () => {
     } catch (error) {
       setStatus({ success: false, message: `Error updating cryptocurrency data: ${error.message}` });
       console.error('Error updating cryptocurrency data:', error.message);
+    } finally {
+      setLoading(false); // Set loading to false after API call
     }
   };
 
@@ -90,7 +98,9 @@ const CryptoUpdate = () => {
 
   return (
     <div className={`crypto-update-container ${status ? (status.success ? 'success' : 'error') : ''}`}>
-      {status ? (
+      {loading ? (
+        <LoadingSpinner /> // Conditionally render the loading spinner
+      ) : status ? (
         <div className={`status-message ${status.success ? '' : 'error'}`}>
           {status.success ? <FaCheckCircle className="success-icon" /> : <FaTimesCircle className="error-icon" />}
           <span>{status.message}</span>

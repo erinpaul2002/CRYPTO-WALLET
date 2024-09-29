@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { supabase } from '../config/supabaseClient';
 import '../styles/addcrypto.css';
 import { FaCheckCircle, FaTimesCircle, FaPlusCircle } from 'react-icons/fa';
-import LoadingSpinner from '../components/LoadingSpinner';
+import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner component
 
 const AddCrypto = () => {
   const [newCrypto, setNewCrypto] = useState({
@@ -13,7 +13,7 @@ const AddCrypto = () => {
     symbol: '',
   });
   const [status, setStatus] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +24,7 @@ const AddCrypto = () => {
   };
 
   const handleAddCrypto = async () => {
-    setLoading(true);
+    setLoading(true); // Set loading to true before API call
 
     // Introduce a delay after showing the spinner
     setTimeout(async () => {
@@ -54,9 +54,9 @@ const AddCrypto = () => {
         setStatus({ success: false, message: `Error adding cryptocurrency: ${error.message}` });
         console.error('Error adding cryptocurrency:', error.message);
       } finally {
-        setLoading(false);
+        setLoading(false); // Set loading to false after API call
       }
-    }, 50); 
+    }, 1000); // 1 second delay
   };
 
   const handleReset = () => {
@@ -72,7 +72,7 @@ const AddCrypto = () => {
   return (
     <div className={`add-crypto-container ${status ? (status.success ? 'success' : 'error') : ''}`}>
       {loading ? (
-        <LoadingSpinner />
+        <LoadingSpinner /> // Conditionally render the loading spinner
       ) : status ? (
         <div className="status-message">
           {status.success ? <FaCheckCircle className="success-icon" /> : <FaTimesCircle className="error-icon" />}

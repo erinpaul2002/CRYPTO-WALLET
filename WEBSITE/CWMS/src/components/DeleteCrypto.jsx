@@ -3,14 +3,17 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../config/supabaseClient';
 import '../styles/deletecrypto.css';
 import { FaCheckCircle, FaTimesCircle, FaTrashAlt } from 'react-icons/fa';
+import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner component
 
 const DeleteCrypto = () => {
   const [cryptocurrencies, setCryptocurrencies] = useState([]);
   const [selectedCrypto, setSelectedCrypto] = useState('');
   const [status, setStatus] = useState(null);
+  const [loading, setLoading] = useState(false); // Add loading state
 
   useEffect(() => {
     const fetchCryptocurrencies = async () => {
+      setLoading(true); // Set loading to true before API call
       try {
         const { data, error } = await supabase.from('cryptocurrency').select();
         if (error) {
@@ -19,6 +22,8 @@ const DeleteCrypto = () => {
         setCryptocurrencies(data);
       } catch (error) {
         console.error('Error fetching cryptocurrencies:', error.message);
+      } finally {
+        setLoading(false); // Set loading to false after API call
       }
     };
 
@@ -26,9 +31,11 @@ const DeleteCrypto = () => {
   }, []);
 
   const handleDeleteCrypto = async () => {
+    setLoading(true); // Set loading to true before API call
     try {
       if (!selectedCrypto) {
         setStatus({ success: false, message: 'Please select a cryptocurrency to delete.' });
+        setLoading(false);
         return;
       }
 
@@ -49,6 +56,8 @@ const DeleteCrypto = () => {
     } catch (error) {
       setStatus({ success: false, message: `Error deleting cryptocurrency: ${error.message}` });
       console.error('Error deleting cryptocurrency:', error.message);
+    } finally {
+      setLoading(false); // Set loading to false after API call
     }
   };
 
@@ -59,7 +68,9 @@ const DeleteCrypto = () => {
 
   return (
     <div className={`delete-crypto-container ${status ? (status.success ? 'success' : 'error') : ''}`}>
-      {status ? (
+      {loading ? (
+        <LoadingSpinner /> // Conditionally render the loading spinner
+      ) : status ? (
         <div className={`status-message ${status.success ? '' : 'error'}`}>
           {status.success ? <FaCheckCircle className="success-icon" /> : <FaTimesCircle className="error-icon" />}
           <span>{status.message}</span>

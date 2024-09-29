@@ -7,17 +7,22 @@ import ViewCrypto from '../components/ViewCrypto';
 import UpdateCrypto from '../components/UpdateCrypto';
 import AddCrypto from '../components/AddCrypto';
 import DeleteCrypto from '../components/DeleteCrypto';
+import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner component
 
 // eslint-disable-next-line react/prop-types
 const AdminDash = ({ token }) => {
   const navigate = useNavigate();
   const [activeComponent, setActiveComponent] = useState('add');
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const handleLogout = () => {
-    // Perform logout logic here
-    sessionStorage.removeItem('token');
-    // For example, clear tokens or user session
-    navigate('/adminlogin'); // Redirect to login page after logout
+    setLoading(true); // Set loading to true
+    setTimeout(() => {
+      // Perform logout logic here
+      sessionStorage.removeItem('token');
+      // For example, clear tokens or user session
+      navigate('/adminlogin'); // Redirect to login page after logout
+    }, 1000); // 1 second delay
   };
 
   const renderComponent = () => {
@@ -42,19 +47,21 @@ const AdminDash = ({ token }) => {
           <div className="navbar">
             <h1>ADMIN DASHBOARD</h1>
             <div className="nav-links">
-              
-              
-              <a  onClick={() => setActiveComponent('add')}>Add Crypto</a>
-              <a  onClick={() => setActiveComponent('view')}>View Crypto</a>
-              <a  onClick={() => setActiveComponent('update')}>Update Crypto</a>
-              <a  onClick={() => setActiveComponent('delete')}>Delete Crypto</a>
+              <a onClick={() => setActiveComponent('add')}>Add Crypto</a>
+              <a onClick={() => setActiveComponent('view')}>View Crypto</a>
+              <a onClick={() => setActiveComponent('update')}>Update Crypto</a>
+              <a onClick={() => setActiveComponent('delete')}>Delete Crypto</a>
               <button id="#logout" onClick={handleLogout}>Logout</button>
             </div>
           </div>
         </nav>
       </header>
       <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '10% 0 0 0' }}>
-        {renderComponent()} 
+        {loading ? (
+          <LoadingSpinner /> // Conditionally render the loading spinner
+        ) : (
+          renderComponent()
+        )}
       </div>
     </div>
   );
