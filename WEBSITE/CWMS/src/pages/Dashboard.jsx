@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../components/user_components/Navbar";
 import { useEffect, useState } from "react";
 import { supabase } from "../config/supabaseClient";
 import { useLocation, useNavigate, Link } from "react-router-dom";
@@ -17,6 +17,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (id) {
+        
         try {
           const { data: userData, error: userError } = await supabase
             .from("user")
@@ -65,6 +66,7 @@ const Dashboard = () => {
 
         } catch (error) {
           console.log(error.message);
+          window.location.reload();
         }
       }
     };

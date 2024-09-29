@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import SignInForm from '../components/signinform';
-import SignUpForm from '../components/signupform';
+import SignInForm from '../components/user_components/signinform';
+import SignUpForm from '../components/user_components/signupform';
 import '../styles/login.css';
 
 

@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { supabase } from '../config/supabaseClient';
+import { supabase } from '../../config/supabaseClient';
 import '../styles/addcrypto.css';
 import { FaCheckCircle, FaTimesCircle, FaPlusCircle } from 'react-icons/fa';
-import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner component
+import LoadingSpinner from '../LoadingSpinner'; // Import the LoadingSpinner component
 
 const AddCrypto = () => {
   const [newCrypto, setNewCrypto] = useState({

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../config/supabaseClient';
+import { supabase } from '../../config/supabaseClient';
 import '../styles/viewcrypto.css';
-import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner component
+import LoadingSpinner from '../LoadingSpinner'; // Import the LoadingSpinner component
 
 const ViewCrypto = () => {
   const [cryptos, setCryptos] = useState([]);
