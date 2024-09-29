@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import "../styles/adminlogin.css";
+import "../styles/adminstyles/adminlogin.css";
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../config/supabaseClient';

@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import '../styles/Website.css';
-import Navbar from '../components/Navbar';
+
 import { Link } from 'react-router-dom';
 // import SearchComponent from './Search';
-import Dashboard from '../pages/Dashboard'
+
 
 
 function Website() {

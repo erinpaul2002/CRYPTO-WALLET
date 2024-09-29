@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { supabase } from '../../config/supabaseClient';
-import '../styles/addcrypto.css';
+import '../../styles/adminstyles/addcrypto.css';
 import { FaCheckCircle, FaTimesCircle, FaPlusCircle } from 'react-icons/fa';
 import LoadingSpinner from '../LoadingSpinner'; // Import the LoadingSpinner component
 

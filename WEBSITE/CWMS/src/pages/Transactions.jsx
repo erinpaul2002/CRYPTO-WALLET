@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { supabase } from "../config/supabaseClient";
-import Navbar from "../components/Navbar";
 import "../styles/transactions.css";
 
 function Transactions() {

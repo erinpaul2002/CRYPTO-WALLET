@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import SignInForm from '../components/user_components/signinform';
 import SignUpForm from '../components/user_components/signupform';
-import '../styles/login.css';
+import '../styles/userstyles/login.css';
 
 
 const Login = () => {

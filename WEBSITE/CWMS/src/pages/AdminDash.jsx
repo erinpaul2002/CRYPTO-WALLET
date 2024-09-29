@@ -2,11 +2,11 @@
 //admin dash
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/admindash.css';
-import ViewCrypto from '../components/ViewCrypto';
-import UpdateCrypto from '../components/UpdateCrypto';
-import AddCrypto from '../components/AddCrypto';
-import DeleteCrypto from '../components/DeleteCrypto';
+import '../styles/adminstyles/admindash.css';
+import ViewCrypto from '../components/admin_components/ViewCrypto';
+import UpdateCrypto from '../components/admin_components/UpdateCrypto';
+import AddCrypto from '../components/admin_components/AddCrypto';
+import DeleteCrypto from '../components/admin_components/DeleteCrypto';
 import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner component
 
 // eslint-disable-next-line react/prop-types
