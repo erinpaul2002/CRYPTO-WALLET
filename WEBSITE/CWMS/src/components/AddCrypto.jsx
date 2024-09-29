@@ -3,15 +3,17 @@ import React, { useState } from 'react';
 import { supabase } from '../config/supabaseClient';
 import '../styles/addcrypto.css';
 import { FaCheckCircle, FaTimesCircle, FaPlusCircle } from 'react-icons/fa';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const AddCrypto = () => {
   const [newCrypto, setNewCrypto] = useState({
     cryptoname: '',
     cryptoprice: '',
-    marketcap: '',
+    supply: '',
     symbol: '',
   });
   const [status, setStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,38 +24,46 @@ const AddCrypto = () => {
   };
 
   const handleAddCrypto = async () => {
-    try {
-      const { data: existingCrypto } = await supabase
-        .from('cryptocurrency')
-        .select('*')
-        .eq('cryptoname', newCrypto.cryptoname);
+    setLoading(true);
 
-      if (existingCrypto.length > 0) {
-        setStatus({ success: false, message: 'Cryptocurrency already exists' });
-        return;
+    // Introduce a delay after showing the spinner
+    setTimeout(async () => {
+      try {
+        const { data: existingCrypto } = await supabase
+          .from('cryptocurrency')
+          .select('*')
+          .eq('cryptoname', newCrypto.cryptoname);
+
+        if (existingCrypto.length > 0) {
+          setStatus({ success: false, message: 'Cryptocurrency already exists' });
+          setLoading(false);
+          return;
+        }
+
+        const { data, error } = await supabase
+          .from('cryptocurrency')
+          .insert([newCrypto]);
+
+        if (error) {
+          throw error;
+        }
+
+        setStatus({ success: true, message: 'Cryptocurrency added successfully' });
+        console.log('Cryptocurrency added:', data);
+      } catch (error) {
+        setStatus({ success: false, message: `Error adding cryptocurrency: ${error.message}` });
+        console.error('Error adding cryptocurrency:', error.message);
+      } finally {
+        setLoading(false);
       }
-
-      const { data, error } = await supabase
-        .from('cryptocurrency')
-        .insert([newCrypto]);
-
-      if (error) {
-        throw error;
-      }
-
-      setStatus({ success: true, message: 'Cryptocurrency added successfully' });
-      console.log('Cryptocurrency added:', data);
-    } catch (error) {
-      setStatus({ success: false, message: `Error adding cryptocurrency: ${error.message}` });
-      console.error('Error adding cryptocurrency:', error.message);
-    }
+    }, 50); 
   };
 
   const handleReset = () => {
     setNewCrypto({
       cryptoname: '',
       cryptoprice: '',
-      marketcap: '',
+      supply: '',
       symbol: '',
     });
     setStatus(null);
@@ -61,7 +71,9 @@ const AddCrypto = () => {
 
   return (
     <div className={`add-crypto-container ${status ? (status.success ? 'success' : 'error') : ''}`}>
-      {status ? (
+      {loading ? (
+        <LoadingSpinner />
+      ) : status ? (
         <div className="status-message">
           {status.success ? <FaCheckCircle className="success-icon" /> : <FaTimesCircle className="error-icon" />}
           <span>{status.message}</span>
@@ -90,10 +102,10 @@ const AddCrypto = () => {
             />
             <input
               type="text"
-              name="marketcap"
-              value={newCrypto.marketcap}
+              name="supply"
+              value={newCrypto.supply}
               onChange={handleChange}
-              placeholder="Enter Market Cap"
+              placeholder="Enter Market Supply"
             />
             <input
               type="text"

@@ -69,8 +69,9 @@ function SignInForm() {
           value={state.password}
           onChange={handleChange}
         />
-        <Link to="/">Back to Home</Link>
+
         <button type="submit">Sign In</button>
+        <Link to="/">Back to Home</Link>
       </form>
     </div>
   );

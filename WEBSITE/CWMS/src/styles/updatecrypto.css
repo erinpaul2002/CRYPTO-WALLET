@@ -2,7 +2,8 @@
 
 .crypto-update-container {
   max-width: 450px;
-  margin: 40px auto;
+  margin-top: 20px;
+  margin-bottom: 100px;
   padding: 30px;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
@@ -12,10 +13,6 @@
   text-align: center;
 }
 
-.crypto-update-container:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
 
 .crypto-update-container h2 {
   font-size: 2rem;
@@ -25,12 +22,35 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
-
-.update-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+/* Ensure the dropdown menu has a fixed width */
+select[name="cryptoid"] {
+  width: 100%; /* Adjust the width as needed */
+  max-width: 500px; /* Adjust the max-width as needed */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  appearance: none; /* Remove default dropdown arrow */
+  background: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
+  background-color: #fff;
+  background-size: 16px;
 }
+
+/* Ensure the dropdown options have a fixed width */
+select[name="cryptoid"] option {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Optional: Add some styling for better appearance */
+select[name="cryptoid"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
 
 .update-fields select,
 .update-fields input,
@@ -106,3 +126,5 @@
   background: linear-gradient(135deg, #004494, #003366);
   transform: translateY(0);
 }
+
+

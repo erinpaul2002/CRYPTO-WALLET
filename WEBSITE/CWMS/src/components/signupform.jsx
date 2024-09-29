@@ -182,8 +182,9 @@ console.error('Error signing up:', error.message);
           style={{width:'35%'}}
         />
         </div>
-        <Link to="/">Back to Home</Link>
+
         <button type="submit">Sign Up</button>
+        <Link to="/">Back to Home</Link>
       </form>
     </div>
   );

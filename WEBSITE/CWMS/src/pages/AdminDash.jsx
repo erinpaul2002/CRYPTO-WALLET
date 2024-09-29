@@ -11,7 +11,7 @@ import DeleteCrypto from '../components/DeleteCrypto';
 // eslint-disable-next-line react/prop-types
 const AdminDash = ({ token }) => {
   const navigate = useNavigate();
-  const [activeComponent, setActiveComponent] = useState('update');
+  const [activeComponent, setActiveComponent] = useState('add');
 
   const handleLogout = () => {
     // Perform logout logic here

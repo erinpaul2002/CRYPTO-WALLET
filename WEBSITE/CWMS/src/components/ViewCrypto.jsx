@@ -1,56 +1,64 @@
-import  { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from '../config/supabaseClient';
 import '../styles/viewcrypto.css';
 
 const ViewCrypto = () => {
   const [cryptos, setCryptos] = useState([]);
-  const [searchSymbol, setSearchSymbol] = useState('');
+  const [selectedCrypto, setSelectedCrypto] = useState('');
 
-  const handleSearch = async () => {
-    if (!searchSymbol.trim()) {
-      setCryptos([]);
-      return;
-    }
+  useEffect(() => {
+    const fetchCryptos = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('cryptocurrency')
+          .select('symbol, cryptoname, cryptoprice, supply');
 
-    try {
-      const { data, error } = await supabase
-        .from('cryptocurrency')
-        .select('symbol, cryptoname, cryptoprice, marketcap')
-        .or(`symbol.ilike.%${searchSymbol}%,cryptoname.ilike.%${searchSymbol}%`);
+        if (error) {
+          throw error;
+        }
 
-      if (error) {
-        throw error;
-      }
-
-      if (data) {
         setCryptos(data);
+      } catch (error) {
+        console.error('Error fetching cryptocurrency data:', error.message);
       }
-    } catch (error) {
-      console.error('Error fetching cryptocurrency data:', error.message);
-    }
+    };
+
+    fetchCryptos();
+  }, []);
+
+  const handleSelectChange = (e) => {
+    setSelectedCrypto(e.target.value);
   };
+
+  const filteredCryptos = selectedCrypto
+    ? cryptos.filter((crypto) => crypto.symbol === selectedCrypto)
+    : [];
 
   return (
     <div className="crypto-container">
       <h2>View Cryptos Available</h2>
       <div className="search-container">
-        <input
-          type="text"
-          value={searchSymbol}
-          onChange={(e) => setSearchSymbol(e.target.value)}
-          placeholder="Search by symbol"
-          className="search-input"
-        />
-        <button className="search-button" onClick={handleSearch}>Search</button>
+        <select
+          value={selectedCrypto}
+          onChange={handleSelectChange}
+          className="search-select"
+        >
+          <option value="">Select a cryptocurrency</option>
+          {cryptos.map((crypto) => (
+            <option key={crypto.symbol} value={crypto.symbol}>
+              {crypto.cryptoname} ({crypto.symbol})
+            </option>
+          ))}
+        </select>
       </div>
-      {cryptos.length > 0 && (
+      {filteredCryptos.length > 0 && (
         <div className="crypto-grid">
-          {cryptos.map((crypto, index) => (
+          {filteredCryptos.map((crypto, index) => (
             <div key={index} className="crypto-card">
               <p className="crypto-name">Name: {crypto.cryptoname}</p>
               <p className="crypto-symbol">Symbol: {crypto.symbol}</p>
               <p className="crypto-price">Price: ${crypto.cryptoprice}</p>
-              <p className="crypto-marketcap">MarketCap: {crypto.marketcap}</p>
+              <p className="crypto-supply">Supply: {crypto.supply}</p>
             </div>
           ))}
         </div>

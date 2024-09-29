@@ -8,7 +8,7 @@ const CryptoUpdate = () => {
   const [cryptoUpdate, setCryptoUpdate] = useState({
     cryptoid: '',
     cryptoprice: '',
-    marketcap: '',
+    supply: '',
   });
 
   const [cryptoList, setCryptoList] = useState([]);
@@ -19,7 +19,7 @@ const CryptoUpdate = () => {
       try {
         const { data, error } = await supabase
           .from('cryptocurrency')
-          .select('cryptoid, cryptoname, marketcap');
+          .select('cryptoid, cryptoname, supply');
 
         if (error) {
           throw error;
@@ -44,12 +44,26 @@ const CryptoUpdate = () => {
 
   const handleUpdate = async () => {
     try {
+      // Fetch the current values from the database
+      const { data: currentData, error: fetchError } = await supabase
+        .from('cryptocurrency')
+        .select('cryptoprice, supply')
+        .eq('cryptoid', cryptoUpdate.cryptoid)
+        .single();
+
+      if (fetchError) {
+        throw fetchError;
+      }
+
+      // Prepare the update object with new values or retain old values
+      const updateData = {
+        cryptoprice: cryptoUpdate.cryptoprice || currentData.cryptoprice,
+        supply: cryptoUpdate.supply || currentData.supply,
+      };
+
       const { data, error } = await supabase
         .from('cryptocurrency')
-        .update({
-          cryptoprice: cryptoUpdate.cryptoprice,
-          marketcap: cryptoUpdate.marketcap,
-        })
+        .update(updateData)
         .eq('cryptoid', cryptoUpdate.cryptoid)
         .select();
 
@@ -69,7 +83,7 @@ const CryptoUpdate = () => {
     setCryptoUpdate({
       cryptoid: '',
       cryptoprice: '',
-      marketcap: '',
+      supply: '',
     });
     setStatus(null);
   };
@@ -106,10 +120,10 @@ const CryptoUpdate = () => {
             />
             <input
               type="text"
-              name="marketcap"
-              value={cryptoUpdate.marketcap}
+              name="supply"
+              value={cryptoUpdate.supply}
               onChange={handleChange}
-              placeholder="Enter Market Cap"
+              placeholder="Enter Market Supply"
             />
             <button onClick={handleUpdate}>Update</button>
           </div>
