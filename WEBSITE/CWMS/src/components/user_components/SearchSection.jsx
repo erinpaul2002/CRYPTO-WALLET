@@ -1,17 +1,24 @@
 
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/userstyles/searchsection.css'
 
-const SearchSection = () => (
-  <section className="search">
-    <div className="card">
-      <h2>View Cryptocurrencies</h2>
-      <br />
-      <Link to="/searchcrypto" className="view-button">
-        View
-      </Link>
-    </div>
-  </section>
-);
+const SearchSection = () => {
+  const navigate = useNavigate();
+  return (
+  <div className="card premium-card">
+  <div className="card-header">
+    <h2 className="view-title">View Crypto</h2>
+  </div>
+  <div className="card-body">
+        <div className="wallet-chip"></div>
+    <button onClick={() => navigate('/searchcrypto')} className="view-button">View</button>
+  </div>
+</div>);
+
+
+
+
+  
+  };
 
 export default SearchSection;

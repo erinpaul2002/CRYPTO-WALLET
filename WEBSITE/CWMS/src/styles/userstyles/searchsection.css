@@ -1,63 +1,54 @@
-/* searchsection.css */
-
-/* General Styles */
-body {
+/* card.css */
+.card.premium-card {
+    width: 350px;
+    height: 200px;
+    background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
+    border-radius: 15px;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card-header {
+    margin-left: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .view-title {
+    font-size: 1.5em;
     margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-}
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
 
-/* Container Styles */
-.search {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Card Styles */
-.card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
-}
-
-.card h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.card p {
-    font-size: 16px;
-    margin: 5px 0;
-}
-
-/* Button Styles */
-.view-button {
-    background: #ff7f50;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
+  
+  .wallet-chip {
+    width: 50px;
+    height: 35px;
+    background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
     border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.view-button:hover {
-    background: #ff6347;
-}
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+ 
+  
+  .view-button {
+    position: absolute;
+    left:30%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40%;
+  }

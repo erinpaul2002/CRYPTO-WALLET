@@ -6,14 +6,17 @@ import '../../styles/userstyles/transactionsection.css'
 const TransactionsSection = ({ id }) => {
   const navigate = useNavigate();
 
-  return (
-    <section className="transactions">
-      <div className="card">
-        <h2>Recent Transactions</h2>
-        <button onClick={() => navigate('/transactions', { state: id })}>View</button>
-      </div>
-    </section>
-  );
+  
+    return (
+    <div className="card premium-card">
+    <div className="card-header">
+      <h2 className="transaction-title">Recent Transactions</h2>
+    </div>
+    <div className="card-body">
+          <div className="wallet-chip"></div>
+      <button onClick={() => navigate('/transactions',{state:id})} className="view-button">View</button>
+    </div>
+  </div>);
 };
 
 TransactionsSection.propTypes = {

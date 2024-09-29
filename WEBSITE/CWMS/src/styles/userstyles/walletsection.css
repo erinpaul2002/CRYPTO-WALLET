@@ -1,42 +1,94 @@
-/* WalletSection.css */
+/* card.css */
+.card.premium-card {
+  width: 350px;
+  height: 200px;
+  background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
+  border-radius: 15px;
+  color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
 
-.wallet {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .wallet .card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-  }
-  
-  .wallet h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .wallet .wallet-info p {
-    margin: 10px 0;
-  }
-  
-  .wallet button {
-    background: #ff7f50;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .wallet button:hover {
-    background: #ff6347;
-  }
+.card-header {
+  margin-left: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wallet-title {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-info {
+  margin-top: 20px;
+}
+
+.wallet-id {
+  position: absolute;
+  bottom: 20px;
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.wallet-balance {
+  position: absolute;
+  font-size: 1em;
+  margin: 5px;
+  left:10%;
+}
+
+.wallet-chip {
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+  border-radius: 5px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.card-logo {
+  width: 60px;
+  height: 60px;
+  background: url('/path/to/logo.png') no-repeat center center;
+  background-size: contain;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.card-number {
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  margin: 20px 0;
+}
+
+.card-expiry {
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.card-holder {
+  font-size: 1em;
+  margin-top: 5px;
+}
+
+.wallet-button {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+}

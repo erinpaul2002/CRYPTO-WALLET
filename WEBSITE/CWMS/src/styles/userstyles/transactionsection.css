@@ -1,38 +1,54 @@
-/* TransactionsSection.css */
+/* card.css */
+.card.premium-card {
+  width: 350px;
+  height: 200px;
+  background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
+  border-radius: 15px;
+  color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
 
-.transactions {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .transactions .card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-  }
-  
-  .transactions h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .transactions button {
-    background: #ff7f50;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .transactions button:hover {
-    background: #ff6347;
-  }
+.card-header {
+  margin-left: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-title {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+
+
+.wallet-chip {
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+  border-radius: 5px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+
+
+.view-button {
+  position: absolute;
+  left:30%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+}

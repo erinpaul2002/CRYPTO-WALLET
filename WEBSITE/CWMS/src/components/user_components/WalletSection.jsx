@@ -6,22 +6,23 @@ import '../../styles/userstyles/walletsection.css'
 const WalletSection = ({ wallet }) => {
   const navigate = useNavigate();
 
-  return (
-    <section className="wallet">
-      <div className="card">
-        <h2>Wallet</h2>
-        <div className="wallet-info">
-          <p>
-            <strong>Balance:</strong> {wallet.balance}
-          </p>
-          <p>
-            <strong>Address:</strong> {wallet.walletid}
-          </p>
-        </div>
-        <br />
-        <button onClick={() => navigate('/wallet', { state: wallet })}>View</button>
-      </div>
-    </section>
+  return (<div className="card premium-card">
+    <div className="card-header">
+      <h2 className="wallet-title">Wallet</h2>
+    </div>
+    <div className="card-body">
+      {wallet ? (
+        <>
+          <div className="card-info">
+            <p className="wallet-id"><strong>Address:</strong> {wallet.walletid}</p>
+            <p className="wallet-balance"> <strong>Balance:</strong> {wallet.balance}</p>
+          </div>
+          <div className="wallet-chip"></div>
+        </>
+      ):""}
+      <button onClick={() => navigate('/wallet', { state: wallet })} className="wallet-button">View</button>
+    </div>
+  </div>
   );
 };
 

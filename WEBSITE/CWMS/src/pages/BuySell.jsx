@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { supabase } from "../config/supabaseClient";
-import CryptoBuyTable from "./CryptoBuyTable";
 import { useLocation } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -59,7 +58,7 @@ function CryptoBuySell() {
     };
 
     fetchWallet();
-  }, [action, amount]);
+  }, [action, amount, uid]);
 
   useEffect(() => {
     const fetchPricesAndCalculateBalance = async () => {
@@ -292,7 +291,6 @@ function CryptoBuySell() {
     <div className="page1">
       <section className="buysell">
         <h1>Buy-Sell Cryptocurrencies</h1>
-        <CryptoBuyTable />
         <div className="buysell-list">
           <div className="crypto1">
             <form onSubmit={handleSubmit}>

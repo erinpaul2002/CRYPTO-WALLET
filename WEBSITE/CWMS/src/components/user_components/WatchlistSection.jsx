@@ -7,14 +7,15 @@ const WatchlistSection = ({ id }) => {
   const navigate = useNavigate();
 
   return (
-    <section className="watchlist">
-      <div className="card">
-        <h2>Your Watchlist</h2>
-        <br />
-        <button onClick={() => navigate('/watchlist', { state: id })}>View</button>
-      </div>
-    </section>
-  );
+    <div className="card premium-card">
+    <div className="card-header">
+      <h2 className="watchlist-title">WatchList</h2>
+    </div>
+    <div className="card-body">
+          <div className="wallet-chip"></div>
+      <button onClick={() => navigate('/watchlist',{state:id})} className="watchlist-button">View</button>
+    </div>
+  </div>);
 };
 WatchlistSection.propTypes = {
   id: PropTypes.string.isRequired,

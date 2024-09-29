@@ -109,13 +109,13 @@ const Dashboard = () => {
       </header>
       {id ? (
         <div className="container10">
-          <section id="hero" className="hero">
+          <div id="hero" className="hero">
             {loading ? (
               <LoadingSpinner /> // Conditionally render the loading spinner
             ) : (
               renderActiveComponent()
             )}
-          </section>
+          </div>
           <footer className="footer">
             <p>CryptoX</p>
             <button className='logout-btn' id="#logout" onClick={handleLogout}>Logout</button>
