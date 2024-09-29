@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from '../config/supabaseClient';
 import { v4 as uuidv4 } from 'uuid';
-import Navbar from '../components/user_components/Navbar';
 import WalletSection from '../components/user_components/WalletSection';
 import SearchSection from '../components/user_components/SearchSection';
 import BuySellSection from '../components/user_components/BuySellSection';
@@ -12,6 +11,7 @@ import WatchlistSection from '../components/user_components/WatchlistSection';
 import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner component
 import Card from '../components/user_components/Card'; // Import the Card component
 import '../styles/userstyles/dashboard.css'
+
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -96,7 +96,15 @@ const Dashboard = () => {
       <header className="header1" style={{ position: 'fixed', width: '100%' }}>
         <div className="logo">
           <h1>Crypto X</h1>
-          <Navbar setActiveComponent={setActiveComponent} />
+          <nav>
+      <ul>
+        <li onClick={() => setActiveComponent('WalletSection')}>Wallet</li>
+        <li onClick={() => setActiveComponent('SearchSection')}>Search</li>
+        <li onClick={() => setActiveComponent('BuySellSection')}>Buy/Sell</li>
+        <li onClick={() => setActiveComponent('TransactionsSection')}>Transactions</li>
+        <li onClick={() => setActiveComponent('WatchlistSection')}>Watchlist</li>
+      </ul>
+    </nav>
         </div>
       </header>
       {id ? (
