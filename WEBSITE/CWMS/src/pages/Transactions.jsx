@@ -1,13 +1,13 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unknown-property */
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { supabase } from "../config/supabaseClient";
 import "../styles/transactions.css";
 
 function Transactions() {
   const location = useLocation();
-  const id = location.state;
+  const navigate = useNavigate();
+  const { user } = location.state;
+  const id = user.id;
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
@@ -31,8 +31,13 @@ function Transactions() {
     fetchTransactions();
   }, [id]);
 
+  const handleBackToDashboard = () => {
+    navigate('/dashboard', { state: { user: { id } } });
+  };
+
   return (
     <div className="paget">
+      <button onClick={handleBackToDashboard} className="back-button">Back to Dashboard</button>
       <section className="transactions">
         <h2>Recent Transactions</h2>
         <ul>
@@ -46,7 +51,7 @@ function Transactions() {
             </li>
           ))}
         </ul>
-        <br />
+        
       </section>
     </div>
   );

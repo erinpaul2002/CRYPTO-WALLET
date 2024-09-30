@@ -1,45 +1,73 @@
-/* Transactions.css */
-.paget{
-    background: linear-gradient(to bottom, #c91258, rgb(255, 255, 255));
+.paget {
+  padding: 40px;
+  background-color: #f0f2f5;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  max-height: 100vh;
 }
-.transactions {
-    text-align: center;
-    padding: 200px;
-  }
-  
-  .transactions h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .transactions ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .transactions li {
-    background-color: #faf6f6;
 
-    border-radius: 8px;
-    margin-bottom: 10px;
-    padding: 20px;
-  }
-  
-  .transactions li .listid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .transactions li p {
-    margin: 5px 0;
-    color: #555;
-  }
-  
-  /* Optional: Hover effect */
-  .transactions li:hover {
-    background-color: rgba(243, 55, 155, 0.5);
-    transition: background-color 0.5s ease-in-out;
-  }
-  
+.transactions {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+.transactions h2 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #333333;
+  text-align: center;
+}
+
+.transactions ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.transactions li {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.transactions li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.transactions .listid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.transactions .listid p {
+  margin: 0;
+  color: #555555;
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
