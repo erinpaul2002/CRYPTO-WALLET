@@ -1,137 +1,58 @@
-// import { useEffect, useState } from 'react';
-// import { supabase } from '../config/supabaseClient';
-import { useLocation, useNavigate } from 'react-router-dom';
-// import "../styles/watchlist.css";
-
-// const Watchlist = () => {
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   const id = location.state;
-//   const [watchlist, setWatchlist] = useState([]);
-//   const [cryptoInfoArray, setCryptoInfoArray] = useState([]);
-
-//   useEffect(() => {
-//     const fetchWatchlistData = async () => {
-//       try {
-//         const { data: watchlistData, error: watchlistError } = await supabase
-//           .from('watchlist')
-//           .select('cryptoid')
-//           .eq('userid', id);
-
-//         if (watchlistError) {
-//           console.error('Error fetching watchlist data:', watchlistError.message);
-//           return;
-//         }
-
-//         const watch = watchlistData[0]?.cryptoid || [];
-//         setWatchlist(watch);
-//       } catch (error) {
-//         console.error('Error in fetchWatchlistData:', error.message);
-//       }
-//     };
-
-//     fetchWatchlistData();
-//   }, [id]);
-
-//   useEffect(() => {
-//     const fetchDataForWatchlist = async () => {
-//       try {
-//         const promises = watchlist.map(async (watchlistItem) => {
-//           const { data: cryptoData, error: cryptoError } = await supabase
-//             .from('cryptocurrency')
-//             .select()
-//             .eq('cryptoid', watchlistItem);
-
-//           if (cryptoError) {
-//             console.error('Error fetching cryptocurrency data:', cryptoError.message);
-//             return null;
-//           }
-
-//           return cryptoData[0];
-//         });
-
-//         const cryptoInfoArray = await Promise.all(promises);
-//         setCryptoInfoArray(cryptoInfoArray);
-//       } catch (error) {
-//         console.error('Error in fetching cryptocurrency data:', error.message);
-//       }
-//     };
-
-//     fetchDataForWatchlist();
-//   }, [watchlist]);
-
-//   return (
-//     <div className='pagee'>
-      
-//     <div className="watchlist-container">
-//       <h2>My Watchlist</h2>
-//       <button onClick={() => navigate('addWatchlist', {state: id})}>Add</button>
-//       <table>
-//         <thead>
-//           <tr>
-//             <th>Symbol</th>
-//             <th>Crypto Name</th>
-//             <th>Price</th>
-//             <th>Market Cap</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {cryptoInfoArray.map((cryptoInfo, index) => (
-//             <tr key={index}>
-//               <td>{cryptoInfo.symbol}</td>
-//               <td>{cryptoInfo.cryptoname}</td>
-//               <td>{cryptoInfo.cryptoprice}</td>
-//               <td>{cryptoInfo.marketcap}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//     </div>
-//   );
-// };
-
-// export default Watchlist;
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase } from '../config/supabaseClient';
 import '../styles/watchlist.css';
+import { useLocation,useNavigate } from 'react-router-dom';
 
 const Watchlist = () => {
-  const navigate = useNavigate();
   const location = useLocation();
-  const id = location.state;
+  const navigate = useNavigate();
+  const id = location.state.user.id;
   const [cryptos, setCryptos] = useState([]);
   const [selectedCrypto, setSelectedCrypto] = useState('');
   const [watchlist, setWatchlist] = useState([]);
-  const [cID, setCID] = useState([])
+  const [cID, setCID] = useState([]);
 
   useEffect(() => {
-        const fetchWatchlistData = async () => {
-          try {
-            const { data: watchlistData, error: watchlistError } = await supabase
-              .from('watchlist')
-              .select('cryptoid')
-              .eq('userid', id);
-    
-            if (watchlistError) {
-              console.error('Error fetching watchlist data:', watchlistError.message);
-              return;
-            }
-    
-            const watch = watchlistData[0]?.cryptoid || [];
-            setWatchlist(watch);
-          } catch (error) {
-            console.error('Error in fetchWatchlistData:', error.message);
-          }
-        };
-    
-        fetchWatchlistData();
-      }, [id, watchlist]);
-
-  useEffect(() => {
-    async function fetchCryptoData() {
+    const fetchWatchlistData = async () => {
       try {
-        let { data: cryptocurrency, error } = await supabase
+        const { data: watchlistData, error: watchlistError } = await supabase
+          .from('watchlist')
+          .select('cryptoid')
+          .eq('userid', id);
+
+        if (watchlistError) {
+          console.error('Error fetching watchlist data:', watchlistError.message);
+          return;
+        }
+
+        const watch = watchlistData[0]?.cryptoid || [];
+        setWatchlist(watch);
+
+        // Fetch cryptocurrency details for the initial watchlist items
+        if (watch.length > 0) {
+          const { data, error } = await supabase
+            .from('cryptocurrency')
+            .select()
+            .in('cryptoid', watch);
+
+          if (error) {
+            throw error;
+          }
+
+          setCID(data);
+        }
+      } catch (error) {
+        console.error('Error in fetchWatchlistData:', error.message);
+      }
+    };
+
+    fetchWatchlistData();
+  }, [id]);
+
+  useEffect(() => {
+    const fetchCryptoData = async () => {
+      try {
+        const { data: cryptocurrency, error } = await supabase
           .from('cryptocurrency')
           .select('cryptoid, cryptoname, cryptoprice, symbol');
 
@@ -143,61 +64,64 @@ const Watchlist = () => {
       } catch (error) {
         console.error('Error fetching crypto data:', error.message);
       }
-    }
-
-    async function fetchWatchlistData() {
-      try {
-        let { data: watchlistData, error } = await supabase
-          .from('watchlist')
-          .select('cryptoid, date')
-          .order('date', { ascending: false });
-
-        if (error) {
-          throw error;
-        }
-
-        setWatchlist(watchlistData);
-      } catch (error) {
-        console.error('Error fetching watchlist data:', error.message);
-      }
-    }
+    };
 
     fetchCryptoData();
-    fetchWatchlistData();
   }, []);
 
   const handleAddToWatchlist = async () => {
-    const oldWatchlist = [...watchlist, selectedCrypto]
-    console.log(oldWatchlist)
+    const oldWatchlist = [...watchlist, selectedCrypto].filter(Boolean); // Filter out any falsy values
+    console.log(oldWatchlist);
     try {
-      const { data, error } = await supabase
+      // Check if a watchlist entry for the user already exists
+      const { data: existingWatchlist, error: fetchError } = await supabase
         .from('watchlist')
-        .update({ cryptoid: oldWatchlist })
+        .select('cryptoid')
         .eq('userid', id);
-
-      if (error) {
-        throw error;
+  
+      if (fetchError) {
+        throw fetchError;
       }
-
-      console.log('Crypto added to watchlist:', data);
-      // Refresh watchlist data
-
-      
-
+  
+      if (existingWatchlist.length === 0) {
+        // Insert a new watchlist entry if it doesn't exist
+        const { data, error } = await supabase
+          .from('watchlist')
+          .insert({ userid: id, cryptoid: oldWatchlist });
+  
+        if (error) {
+          throw error;
+        }
+  
+        console.log('Crypto added to watchlist:', data);
+      } else {
+        // Update the existing watchlist entry
+        const { data, error } = await supabase
+          .from('watchlist')
+          .update({ cryptoid: oldWatchlist })
+          .eq('userid', id);
+  
+        if (error) {
+          throw error;
+        }
+  
+        console.log('Crypto added to watchlist:', data);
+      }
+  
       const { data: updatedWatchlist, error: updatedError } = await supabase
         .from('watchlist')
         .select('cryptoid')
-        .order('date', { ascending: false });
-
+        .eq('userid', id);
+  
       if (updatedError) {
         throw updatedError;
       }
-
-      setWatchlist(updatedWatchlist);
+  
+      setWatchlist(updatedWatchlist[0]?.cryptoid || []);
     } catch (error) {
       console.error('Error adding crypto to watchlist:', error.message);
     }
-
+  
     try {
       const { data, error } = await supabase
         .from('cryptocurrency')
@@ -207,18 +131,48 @@ const Watchlist = () => {
       if (error) {
         throw error;
       }
-      
-      setCID(data)
-      console.log(data)
+  
+      setCID(data);
+      console.log(data);
       return data;
     } catch (error) {
       console.error('Error fetching cryptocurrency details:', error.message);
       return null;
     }
   };
+  const handleDeleteFromWatchlist = async (cryptoid) => {
+    const updatedWatchlist = watchlist.filter((id) => id !== cryptoid);
+    try {
+      const { data, error } = await supabase
+        .from('watchlist')
+        .update({ cryptoid: updatedWatchlist })
+        .eq('userid', id);
+
+      if (error) {
+        throw error;
+      }
+
+      console.log('Crypto removed from watchlist:', data);
+      setWatchlist(updatedWatchlist);
+
+      const { data: updatedCID, error: updatedCIDError } = await supabase
+        .from('cryptocurrency')
+        .select()
+        .in('cryptoid', updatedWatchlist);
+
+      if (updatedCIDError) {
+        throw updatedCIDError;
+      }
+
+      setCID(updatedCID);
+    } catch (error) {
+      console.error('Error removing crypto from watchlist:', error.message);
+    }
+  };
 
   return (
     <div className="watchlist-container">
+      <button className="back-button" onClick={() => navigate('/dashboard',{ state: { user: { id } } })}>Back to Dashboard</button>
       <h2>My Watchlist</h2>
       <div className="add-crypto">
         <select value={selectedCrypto} onChange={(e) => setSelectedCrypto(e.target.value)}>
@@ -247,6 +201,9 @@ const Watchlist = () => {
                 <td style={{ color: 'black' }}>{item.cryptoname}</td>
                 <td style={{ color: 'black' }}>{item.symbol}</td>
                 <td style={{ color: 'black' }}>{item.cryptoprice}</td>
+                <td>
+                  <button onClick={() => handleDeleteFromWatchlist(item.cryptoid)}>Delete</button>
+                </td>
               </tr>
             ))}
           </tbody>

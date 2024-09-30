@@ -46,9 +46,10 @@
 
 
 .watchlist-button {
-  position: absolute;
-  left:30%;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  align-self: center;
+  margin-top: 10%;
   width: 40%;
+  z-index: 10; /* Ensure the button is on top */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
 }

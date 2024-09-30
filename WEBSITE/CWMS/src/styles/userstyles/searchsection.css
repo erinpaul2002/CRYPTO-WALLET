@@ -1,54 +1,51 @@
 /* card.css */
 .card.premium-card {
-    width: 350px;
-    height: 200px;
-    background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
-    border-radius: 15px;
-    color: white;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-family: 'Arial', sans-serif;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .card-header {
-    margin-left: 20%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .view-title {
-    font-size: 1.5em;
-    margin: 0;
-  }
-  
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-  }
-  
+  width: 350px;
+  height: 200px;
+  background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
+  border-radius: 15px;
+  color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
 
-  
-  .wallet-chip {
-    width: 50px;
-    height: 35px;
-    background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
-    border-radius: 5px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
-  
- 
-  
-  .view-button {
-    position: absolute;
-    left:30%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40%;
-  }
+.card-header {
+  margin-left: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-title {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.wallet-chip {
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+  border-radius: 5px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.view-button {
+  position: relative;
+  align-self: center;
+  margin-top: auto;
+  width: 40%;
+  z-index: 10; /* Ensure the button is on top */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+}

@@ -78,7 +78,7 @@ const Dashboard = () => {
       case 'WalletSection':
         return <WalletSection wallet={wallet} />;
       case 'SearchSection':
-        return <SearchSection />;
+        return <SearchSection id={id}/>;
       case 'BuySellSection':
         return <BuySellSection wallet={wallet} />;
       case 'TransactionsSection':
@@ -96,7 +96,7 @@ const Dashboard = () => {
       <header className="header1" style={{ position: 'fixed', width: '100%' }}>
         <div className="logo">
           <h1>Crypto X</h1>
-          <nav>
+          <nav className='user-nav'>
       <ul>
         <li onClick={() => setActiveComponent('WalletSection')}>Wallet</li>
         <li onClick={() => setActiveComponent('SearchSection')}>Search</li>

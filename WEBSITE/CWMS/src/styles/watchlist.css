@@ -1,76 +1,94 @@
-/* Add this to your existing CSS or in a separate file */
+/* watchlist.css */
 
-/* Container styles */
-.pagee{
-    background-color:rgb(255, 255, 255);
-}
 .watchlist-container {
-    max-width: 800px;
-    margin: 0 auto; /* This will center the container horizontally */
-    margin-top: 10%;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(10, 10, 10, 0.4);
-  }
-  
-  /* Center the button within the container */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  /* Add this to center the table within the container */
-  .watchlist-container table {
-    margin: 0 auto; /* Center the table within its container */
-  }
+h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.add-crypto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-crypto select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.add-crypto button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-crypto button:hover {
+  background-color: #0056b3;
+}
+
+.watchlist-items {
+  margin-top: 20px;
+}
+
+.watchlist-items h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.watchlist-items table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.watchlist-items th,
+.watchlist-items td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.watchlist-items th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.watchlist-items tr:hover {
+  background-color: #f1f1f1;
+}
+
+.watchlist-items button {
+  padding: 5px 10px;
+  font-size: 0.875rem;
+  color: #fff;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   
-  
-  /* Title styles */
-  .watchlist-container h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  /* Button styles */
-  .watchlist-container button {
-    padding: 10px;
-    background-color: #080808;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease;
-    text-align: center; /* Align button to the center */
-    display: block; /* Ensure it takes full width */
-    margin: 0 auto; /* Center the button within its container */
-  }
-  
-  .watchlist-container button:hover {
-    background-color: #0a4683;
-  }
-  
-  /* Table styles */
-  .watchlist-container table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  /* Table header styles */
-  .watchlist-container th {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  /* Table cell styles */
-  .watchlist-container td {
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
-  
-  /* Alternating row colors for better readability */
-  .watchlist-container tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
+}
+
+.watchlist-items button:hover {
+  background-color: #c82333;
+}

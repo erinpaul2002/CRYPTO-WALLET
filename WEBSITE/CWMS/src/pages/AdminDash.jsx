@@ -43,7 +43,7 @@ const AdminDash = ({ token }) => {
   return (
     <div>
       <header>
-        <nav>
+        <nav className='admin-nav'>
           <div className="navbar">
             <h1>ADMIN DASHBOARD</h1>
             <div className="nav-links">

@@ -100,21 +100,19 @@ body {
   }
   /* Navbar.css */
 
-nav {
+.user-nav {
   background-color: rgb(0, 0, 0);
-  margin-top: 5%;
-
+  margin-top: 1%;
   padding: 1rem;
   position: fixed;
   width: 100%;
-  top: 10%;
   left: 0%;
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background 0.3s ease;
 }
 
-nav ul {
+.user-nav ul {
   list-style: none;
   display: flex;
   justify-content: space-around;
@@ -122,7 +120,7 @@ nav ul {
   padding: 0;
 }
 
-nav ul li {
+.user-nav ul li {
   color: #fff;
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -130,12 +128,12 @@ nav ul li {
   border-radius: 5px;
 }
 
-nav ul li:hover {
+.user-nav ul li:hover {
   background-color: #007bff;
   transform: scale(1.1);
 }
 
-nav ul li.active {
+.user-nav ul li.active {
   background-color: #0056b3;
   border-radius: 5px;
 }
