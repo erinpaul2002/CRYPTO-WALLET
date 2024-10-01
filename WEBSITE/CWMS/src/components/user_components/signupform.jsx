@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { supabase } from '../../config/supabaseClient';
 import { Link, useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -79,6 +80,20 @@ function SignUpForm() {
     if (error) {
       throw error;
     }
+    const { walletError } = await supabase
+        .from('wallet')
+        .insert({
+          walletid: uuidv4(),
+          userid: data.user.id,
+          balance: 10000,
+          cryptoid: [],
+          quantity: []
+        });
+
+      if (walletError) {
+        throw walletError;
+      }
+
     navigate('/dashboard', {state: data})
     }catch(error){
 console.error('Error signing up:', error.message);

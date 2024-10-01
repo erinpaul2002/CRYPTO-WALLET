@@ -1,25 +1,26 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { supabase } from "../config/supabaseClient";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
-
 import "../styles/buysell.css";
 
 function CryptoBuySell() {
   const [wallet, setWallet] = useState("");
   const location = useLocation();
-  const id = location.state;
-  const uid = id.userid;
+  const navigate = useNavigate();
+  const { user } = location.state;
+  const uid = user.id;
 
   const [action, setAction] = useState("");
   const [crypto, setCrypto] = useState("");
   const [amount, setAmount] = useState("");
   const [cryptoHoldings, setCryptoHoldings] = useState([]);
   const [cryptoBal, setCryptoBal] = useState([]);
-  const [actualCryptoBal, setActualCryptoBal] = useState([]); // Add this line
+  const [actualCryptoBal, setActualCryptoBal] = useState([]);
   const [cryptocurrencies, setCryptocurrencies] = useState([]);
   const [totalBalance, setTotalBalance] = useState(0);
+  const [notification, setNotification] = useState({ message: "", type: "" });
 
   useEffect(() => {
     const fetchCryptocurrencies = async () => {
@@ -51,7 +52,7 @@ function CryptoBuySell() {
         setWallet(data);
         setCryptoHoldings(data.cryptoid || []);
         setCryptoBal(data.quantity || []);
-        setActualCryptoBal(data.quantity || []); // Initialize actualCryptoBal
+        setActualCryptoBal(data.quantity || []);
       } catch (error) {
         console.log(error.message);
       }
@@ -119,16 +120,16 @@ function CryptoBuySell() {
         throw error;
       }
   
-      return data ? data.cryptoprice : 0; // Return 0 if data is not available
+      return data ? data.cryptoprice : 0;
     } catch (error) {
       console.error("Error fetching cryptocurrency price:", error.message);
-      return 0; // Return 0 in case of an error
+      return 0;
     }
   };
 
   const handleBuySell = async () => {
     if (!crypto || !action || !amount) {
-      console.error("Please fill in all details");
+      setNotification({ message: "Please fill in all details", type: "error" });
       return;
     }
   
@@ -137,14 +138,35 @@ function CryptoBuySell() {
     if (action === "sell") {
       if (index !== -1) {
         const bal = cryptoBal[index];
-        console.log(wallet.balance)
         if (bal >= amount) {
           const updatedCryptoBal = [...cryptoBal];
           updatedCryptoBal[index] = bal - parseInt(amount);
-          setCryptoBal(updatedCryptoBal);
   
           const updatedActualCryptoBal = [...actualCryptoBal];
           updatedActualCryptoBal[index] = bal - parseInt(amount);
+  
+          if (updatedActualCryptoBal[index] === 0) {
+            updatedCryptoBal.splice(index, 1);
+            updatedActualCryptoBal.splice(index, 1);
+            const updatedCryptoHoldings = [...cryptoHoldings];
+            updatedCryptoHoldings.splice(index, 1);
+            setCryptoHoldings(updatedCryptoHoldings);
+
+            try {
+              await supabase
+                .from("wallet")
+                .update({
+                  quantity: updatedActualCryptoBal,
+                  cryptoid: updatedCryptoHoldings,
+                })
+                .eq("walletid", wallet.walletid);
+            } catch (error) {
+              setNotification({ message: "Error updating wallet: " + error.message, type: "error" });
+              return;
+            }
+          }
+  
+          setCryptoBal(updatedCryptoBal);
           setActualCryptoBal(updatedActualCryptoBal);
   
           try {
@@ -164,11 +186,10 @@ function CryptoBuySell() {
               transactionid: tId,
               timestamp: new Date().toISOString(),
               amount: amount,
-              walletid: id.walletid,
+              walletid: user.walletid,
               userid: uid,
             });
   
-            // Fetch updated wallet data after the sell operation
             const { data: updatedWallet, error: walletError } = await supabase
               .from("wallet")
               .select()
@@ -180,24 +201,22 @@ function CryptoBuySell() {
             }
   
             setWallet(updatedWallet);
-  
-            console.log("Sell operation completed successfully!");
+            setNotification({ message: "Sell operation completed successfully!", type: "success" });
           } catch (error) {
-            console.error("Error updating wallet or inserting transaction:", error.message);
+            setNotification({ message: "Error updating wallet or inserting transaction: " + error.message, type: "error" });
           }
         } else {
-          console.error("Not enough crypto to sell the given amount!");
+          setNotification({ message: "Not enough crypto to sell the given amount!", type: "error" });
         }
       } else {
-        console.error("The mentioned crypto is not in your holdings!");
+        setNotification({ message: "The mentioned crypto is not in your holdings!", type: "error" });
       }
-    }else if (action === "buy") {
+    } else if (action === "buy") {
       const selectedCrypto = cryptocurrencies.find((c) => c.cryptoid === crypto);
   
       if (selectedCrypto) {
         const cryptoPrice = selectedCrypto.cryptoprice;
         const totalCost = cryptoPrice * parseInt(amount);
-        console.log(wallet.balance)
   
         if (wallet.balance >= totalCost) {
           if (index !== -1) {
@@ -224,55 +243,52 @@ function CryptoBuySell() {
                 transactionid: tId,
                 timestamp: new Date().toISOString(),
                 amount: amount,
-                walletid: id.walletid,
+                walletid: user.walletid,
                 userid: uid
               });
   
-              console.log("Buy operation completed successfully!");
-            } 
-              catch (error) {
-              console.error("Error updating wallet or inserting transaction:", error.message);
+              setNotification({ message: "Buy operation completed successfully!", type: "success" });
+            } catch (error) {
+              setNotification({ message: "Error updating wallet or inserting transaction: " + error.message, type: "error" });
             }
           } else {
             const updatedCryptoHoldings = [...cryptoHoldings, crypto];
-          const updatedCryptoBal = [...cryptoBal, parseInt(amount)];
-          setCryptoHoldings(updatedCryptoHoldings);
-          setCryptoBal(updatedCryptoBal);
+            const updatedCryptoBal = [...cryptoBal, parseInt(amount)];
+            setCryptoHoldings(updatedCryptoHoldings);
+            setCryptoBal(updatedCryptoBal);
 
-          try {
-            await supabase
-              .from("wallet")
-              .update({
-                quantity: updatedCryptoBal,
-                cryptoid: updatedCryptoHoldings,
-                balance: wallet.balance - totalCost
-              })
-              .eq("walletid", wallet.walletid);
+            try {
+              await supabase
+                .from("wallet")
+                .update({
+                  quantity: updatedCryptoBal,
+                  cryptoid: updatedCryptoHoldings,
+                  balance: wallet.balance - totalCost
+                })
+                .eq("walletid", wallet.walletid);
 
-            const tId = uuidv4();
-            await supabase.from("transaction").insert({
-              transactionid: tId,
-              timestamp: new Date().toISOString(),
-              amount: amount,
-              walletid: id.walletid,
-              userid: uid
-            });
+              const tId = uuidv4();
+              await supabase.from("transaction").insert({
+                transactionid: tId,
+                timestamp: new Date().toISOString(),
+                amount: amount,
+                walletid: user.walletid,
+                userid: uid
+              });
 
-            console.log("Buy operation completed successfully!");
-          } catch (error) {
-            console.error("Error updating wallet or inserting transaction:", error.message);
-          }
-            console.error("The mentioned crypto is not in your holdings!");
+              setNotification({ message: "Buy operation completed successfully!", type: "success" });
+            } catch (error) {
+              setNotification({ message: "Error updating wallet or inserting transaction: " + error.message, type: "error" });
+            }
           }
         } else {
-          console.error("Not enough balance to make the purchase!");
+          setNotification({ message: "Not enough balance to make the purchase!", type: "error" });
         }
       } else {
-        console.error("Selected cryptocurrency not found!");
+        setNotification({ message: "Selected cryptocurrency not found!", type: "error" });
       }
     }
   };
-  
 
   const calculateTotalBalance = (updatedActualCryptoBal) => {
     const newTotalBalance = cryptocurrencies.reduce((acc, { cryptoid, cryptoprice }) => {
@@ -287,10 +303,20 @@ function CryptoBuySell() {
     return newTotalBalance;
   };
 
+  const handleBackToDashboard = () => {
+    navigate('/dashboard', { state: { user } });
+  };
+
   return (
     <div className="page1">
+      <button onClick={handleBackToDashboard} className="back-button">Back to Dashboard</button>
+      <h1>Buy-Sell Cryptocurrencies</h1>
+      {notification.message && (
+        <div className={`notification ${notification.type}`}>
+          {notification.message}
+        </div>
+      )}
       <section className="buysell">
-        <h1>Buy-Sell Cryptocurrencies</h1>
         <div className="buysell-list">
           <div className="crypto1">
             <form onSubmit={handleSubmit}>
@@ -319,7 +345,6 @@ function CryptoBuySell() {
               </div>
               <button type="submit">Submit</button>
             </form>
-            {/* <p>Total Balance: {wallet.balance}</p> */}
           </div>
         </div>
       </section>

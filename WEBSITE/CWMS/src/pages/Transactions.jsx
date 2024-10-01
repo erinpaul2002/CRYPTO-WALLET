@@ -32,27 +32,30 @@ function Transactions() {
   }, [id]);
 
   const handleBackToDashboard = () => {
-    navigate('/dashboard', { state: { user: { id } } });
+    navigate('/dashboard', { state: { user } });
   };
 
   return (
     <div className="paget">
       <button onClick={handleBackToDashboard} className="back-button">Back to Dashboard</button>
-      <section className="transactions">
-        <h2>Recent Transactions</h2>
-        <ul>
-          {transactions.map((transaction) => (
-            <li key={transaction.timestamp}>
-              <div className="listid">
-                <p>Transaction ID: {transaction.transactionid}</p>
-                <p>Quantity: {transaction.amount}</p>
-                <p>Timestamp: {new Date(transaction.timestamp).toLocaleString()}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        
-      </section>
+      <h2>Recent Transactions</h2>
+      {transactions.length > 0 ? (
+        <section className="transactions">
+          <ul>
+            {transactions.map((transaction) => (
+              <li key={transaction.timestamp}>
+                <div className="listid">
+                  <p>Transaction ID: {transaction.transactionid}</p>
+                  <p>Quantity: {transaction.amount}</p>
+                  <p>Timestamp: {new Date(transaction.timestamp).toLocaleString()}</p>
+                </div>
+              </li>
+            )).reverse()}
+          </ul>
+        </section>
+      ) : (
+        <p>No transactions available.</p>
+      )}
     </div>
   );
 }

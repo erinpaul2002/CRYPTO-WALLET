@@ -1,14 +1,14 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase } from '../config/supabaseClient';
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import "../styles/wallet.css";
 
 function Wallet() {
   const location = useLocation();
-  const walletDetails = location.state;
-  const walletId = walletDetails.walletid; // Fix variable name here
-  console.log(walletDetails);
+  const navigate = useNavigate();
+  const { user,wallet } = location.state || {};
+  const walletId = wallet.walletid;
+  console.log(wallet, user);
 
   const [cryptoDetails, setCryptoDetails] = useState([]);
 
@@ -24,7 +24,7 @@ function Wallet() {
           throw walletError;
         }
 
-        const cryptoIdList = walletData[0].cryptoid; // Assuming cryptoid is an array in your wallet table
+        const cryptoIdList = walletData[0]?.cryptoid;
 
         if (cryptoIdList && cryptoIdList.length > 0) {
           const { data: cryptoData, error: cryptoError } = await supabase
@@ -43,12 +43,19 @@ function Wallet() {
       }
     };
 
-    fetchCryptoDetails();
+    if (walletId) {
+      fetchCryptoDetails();
+    }
   }, [walletId]);
+
+  const handleBackToDashboard = () => {
+    navigate('/dashboard', { state: { user,wallet } });
+  };
 
   return (
     <div>
       <div className='bodyy'>
+        <button onClick={handleBackToDashboard} className="back-button">Back to Dashboard</button>
         <section className="wallet1">
           <h2>Your Wallet</h2>
           <div className="wallet-info">
@@ -61,10 +68,11 @@ function Wallet() {
 
           {cryptoDetails.map((crypto, index) => (
             <div key={index} className="crypto-balance">
-              <p><strong>Cryptoname:</strong> {crypto.cryptoname}</p>
+              <p><strong>Cryptoname:</strong> {crypto.cryptoname}::<strong>Quantity:</strong> {wallet.quantity[index]}</p>
+             
             </div>
           ))}
-          <p>Total balance: {walletDetails.balance}</p>
+          <p>Total balance: {wallet.balance}</p>
         </section>
       </div>
     </div>

@@ -4,36 +4,36 @@ import PropTypes from 'prop-types';
 import '../../styles/userstyles/searchsection.css';
 import LoadingOverlay from '../LoadingOverlay';
 
-const SearchSection = ({ id }) => {
+const SearchSection = ({ user }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleViewClick = () => {
     console.log('View button clicked');
-    console.log('ID:', id);
+    console.log('ID:', user.id);
     setIsLoading(true);
     setTimeout(() => {
       console.log('Navigating to /searchcrypto');
-      navigate('/searchcrypto', { state: { user: { id } } });
+      navigate('/searchcrypto', { state: { user } });
     }, 1000); // Simulate a delay for loading
   };
 
   return (
-    <div className="card premium-card">
+    <div className="search-card search-premium-card">
       {isLoading && <LoadingOverlay />}
-      <div className="card-header">
-        <h2 className="view-title">View Crypto</h2>
+      <div className="search-card-header">
+        <h2 className="search-title">View Crypto</h2>
       </div>
-      <div className="card-body">
-        <div className="wallet-chip"></div>
-        <button onClick={handleViewClick} className="view-button">View</button>
+      <div className="search-card-body">
+        <div className="search-chip"></div>
+        <button onClick={handleViewClick} className="search-button">View</button>
       </div>
     </div>
   );
 };
 
 SearchSection.propTypes = {
-  id: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 export default SearchSection;

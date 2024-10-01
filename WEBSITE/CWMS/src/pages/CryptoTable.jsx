@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../config/supabaseClient';
 import '../styles/CryptoTable.css';
-import { useLocation,useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const CryptoTable = () => {
   const [cryptoData, setCryptoData] = useState([]);
-  const navigate=useNavigate();
-  const location=useLocation();
-  const id = location.state.user.id;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { user } = location.state;
 
   const fetchData = async () => {
     const { data, error } = await supabase.from('cryptocurrency').select('*');
@@ -24,7 +24,7 @@ const CryptoTable = () => {
 
   return (
     <div className='tablebody'>
-      <button className="back-button" onClick={() => navigate('/dashboard',{ state: {user:{ id } } })}>Back to Dashboard</button>
+      <button className="back-button" onClick={() => navigate('/dashboard', { state: { user } })}>Back to Dashboard</button>
       <div className="container">
         <h1 className="title">Crypto Table</h1>
         <table className="crypto-table">

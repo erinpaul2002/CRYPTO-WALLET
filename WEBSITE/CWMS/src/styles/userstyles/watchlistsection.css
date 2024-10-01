@@ -1,5 +1,5 @@
-/* card.css */
-.card.premium-card {
+/* watchlistsection.css */
+.watchlist-card.watchlist-premium-card {
   width: 350px;
   height: 200px;
   background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-.card-header {
+.watchlist-card-header {
   margin-left: 20%;
   display: flex;
   justify-content: space-between;
@@ -24,16 +24,14 @@
   margin: 0;
 }
 
-.card-body {
+.watchlist-card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
 
-
-
-.wallet-chip {
+.watchlist-chip {
   width: 50px;
   height: 35px;
   background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
@@ -43,13 +41,23 @@
   left: 20px;
 }
 
-
-
 .watchlist-button {
   position: relative;
   align-self: center;
   margin-top: 10%;
   width: 40%;
-  z-index: 10; /* Ensure the button is on top */
-  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+  background-color: #fd5900;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.watchlist-button:hover {
+  background-color: #00ce4f;
+  color: black;
+  transform: translateY(-3px);
 }

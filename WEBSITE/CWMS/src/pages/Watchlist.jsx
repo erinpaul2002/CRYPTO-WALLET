@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../config/supabaseClient';
 import '../styles/watchlist.css';
-import { useLocation,useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Watchlist = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const id = location.state.user.id;
+  const user = location.state.user;
+  const id = user.id;
   const [cryptos, setCryptos] = useState([]);
   const [selectedCrypto, setSelectedCrypto] = useState('');
   const [watchlist, setWatchlist] = useState([]);
@@ -28,7 +29,6 @@ const Watchlist = () => {
         const watch = watchlistData[0]?.cryptoid || [];
         setWatchlist(watch);
 
-        // Fetch cryptocurrency details for the initial watchlist items
         if (watch.length > 0) {
           const { data, error } = await supabase
             .from('cryptocurrency')
@@ -70,68 +70,65 @@ const Watchlist = () => {
   }, []);
 
   const handleAddToWatchlist = async () => {
-    const oldWatchlist = [...watchlist, selectedCrypto].filter(Boolean); // Filter out any falsy values
+    const oldWatchlist = [...watchlist, selectedCrypto].filter(Boolean);
     console.log(oldWatchlist);
     try {
-      // Check if a watchlist entry for the user already exists
       const { data: existingWatchlist, error: fetchError } = await supabase
         .from('watchlist')
         .select('cryptoid')
         .eq('userid', id);
-  
+
       if (fetchError) {
         throw fetchError;
       }
-  
+
       if (existingWatchlist.length === 0) {
-        // Insert a new watchlist entry if it doesn't exist
         const { data, error } = await supabase
           .from('watchlist')
           .insert({ userid: id, cryptoid: oldWatchlist });
-  
+
         if (error) {
           throw error;
         }
-  
+
         console.log('Crypto added to watchlist:', data);
       } else {
-        // Update the existing watchlist entry
         const { data, error } = await supabase
           .from('watchlist')
           .update({ cryptoid: oldWatchlist })
           .eq('userid', id);
-  
+
         if (error) {
           throw error;
         }
-  
+
         console.log('Crypto added to watchlist:', data);
       }
-  
+
       const { data: updatedWatchlist, error: updatedError } = await supabase
         .from('watchlist')
         .select('cryptoid')
         .eq('userid', id);
-  
+
       if (updatedError) {
         throw updatedError;
       }
-  
+
       setWatchlist(updatedWatchlist[0]?.cryptoid || []);
     } catch (error) {
       console.error('Error adding crypto to watchlist:', error.message);
     }
-  
+
     try {
       const { data, error } = await supabase
         .from('cryptocurrency')
         .select()
         .in('cryptoid', oldWatchlist);
-  
+
       if (error) {
         throw error;
       }
-  
+
       setCID(data);
       console.log(data);
       return data;
@@ -140,6 +137,7 @@ const Watchlist = () => {
       return null;
     }
   };
+
   const handleDeleteFromWatchlist = async (cryptoid) => {
     const updatedWatchlist = watchlist.filter((id) => id !== cryptoid);
     try {
@@ -172,7 +170,7 @@ const Watchlist = () => {
 
   return (
     <div className="watchlist-container">
-      <button className="back-button" onClick={() => navigate('/dashboard',{ state: { user: { id } } })}>Back to Dashboard</button>
+      <button className="back-button" onClick={() => navigate('/dashboard', { state: { user } })}>Back to Dashboard</button>
       <h2>My Watchlist</h2>
       <div className="add-crypto">
         <select value={selectedCrypto} onChange={(e) => setSelectedCrypto(e.target.value)}>

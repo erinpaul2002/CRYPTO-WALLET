@@ -3,6 +3,8 @@
   background-color: #f0f2f5;
   font-family: 'Arial', sans-serif;
   display: flex;
+  flex-direction: column; /* Add this line */
+  align-items: center; /* Add this line */
   max-height: 100vh;
 }
 
@@ -14,7 +16,15 @@
   max-width: 800px;
   margin: 0 auto;
   overflow-y: scroll;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
 }
+
+.transactions::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+  
+
 
 .transactions h2 {
   margin-bottom: 30px;
@@ -29,7 +39,7 @@
 }
 
 .transactions li {
-  background-color: #f9f9f9;
+  background-color: wheat;
   padding: 20px;
   margin-bottom: 15px;
   border-radius: 8px;
@@ -38,6 +48,7 @@
 }
 
 .transactions li:hover {
+  background-color: whitesmoke;
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

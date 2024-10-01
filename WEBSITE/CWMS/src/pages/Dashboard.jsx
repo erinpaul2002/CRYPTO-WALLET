@@ -8,24 +8,24 @@ import SearchSection from '../components/user_components/SearchSection';
 import BuySellSection from '../components/user_components/BuySellSection';
 import TransactionsSection from '../components/user_components/TransactionsSection';
 import WatchlistSection from '../components/user_components/WatchlistSection';
-import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner component
-import Card from '../components/user_components/Card'; // Import the Card component
-import '../styles/userstyles/dashboard.css'
-
+import LoadingSpinner from '../components/LoadingSpinner';
+import Card from '../components/user_components/Card';
+import '../styles/userstyles/dashboard.css';
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const id = location.state.user.id;
+  const user = location.state.user || {}; // Safely access user details
+  const id = user.id;
   const [userData, setUserData] = useState('');
-  const [wallet, setWallet] = useState('');
-  const [activeComponent, setActiveComponent] = useState('Card'); // Set initial component to Card
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [wallet, setWallet] = useState(user.wallet || ''); // Initialize with passed wallet
+  const [activeComponent, setActiveComponent] = useState('Card');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       if (id) {
-        setLoading(true); // Set loading to true before API call
+        setLoading(true);
         try {
           const { data: userData, error: userError } = await supabase
             .from('user')
@@ -47,15 +47,37 @@ const Dashboard = () => {
 
           if (!walletData || walletData.length === 0) {
             const walletId = uuidv4();
-          }
-          if (walletError) {
-            throw walletError;
+            const initialBalance = 10000;
+          
+            const createWallet = async () => {
+              try {
+                const { error } = await supabase
+                  .from('wallet')
+                  .insert({
+                    walletid: walletId,
+                    userid: user.id, // Assuming you have the user ID available
+                    balance: initialBalance,
+                    cryptoid: [],
+                    quantity: []
+                  });
+          
+                if (error) {
+                  throw error;
+                }
+          
+                console.log("New wallet created successfully!");
+              } catch (error) {
+                console.error("Error creating wallet:", error.message);
+              }
+            };
+          
+            createWallet();
           }
         } catch (error) {
           console.log(error.message);
-          window.location.reload();
+          
         } finally {
-          setLoading(false); // Set loading to false after API call
+          setLoading(false);
         }
       }
     };
@@ -64,27 +86,25 @@ const Dashboard = () => {
   }, [id]);
 
   const handleLogout = () => {
-    setLoading(true); // Set loading to true
+    setLoading(true);
     setTimeout(() => {
-      // Perform logout logic here
       sessionStorage.removeItem('token');
-      // For example, clear tokens or user session
-      navigate('/login'); // Redirect to login page after logout
-    }, 1000); // 1 second delay
+      navigate('/login');
+    }, 1000);
   };
 
   const renderActiveComponent = () => {
     switch (activeComponent) {
       case 'WalletSection':
-        return <WalletSection wallet={wallet} />;
+        return <WalletSection user={user} wallet={wallet}/>;
       case 'SearchSection':
-        return <SearchSection id={id}/>;
+        return <SearchSection user={user}  />;
       case 'BuySellSection':
-        return <BuySellSection wallet={wallet} />;
+        return <BuySellSection user={user} />;
       case 'TransactionsSection':
-        return <TransactionsSection id={id} />;
+        return <TransactionsSection user={user} />;
       case 'WatchlistSection':
-        return <WatchlistSection id={id} />;
+        return <WatchlistSection user={user} />;
       case 'Card':
       default:
         return <Card firstname={userData?.firstname} walletid={wallet.walletid} />;
@@ -97,21 +117,21 @@ const Dashboard = () => {
         <div className="logo">
           <h1>Crypto X</h1>
           <nav className='user-nav'>
-      <ul>
-        <li onClick={() => setActiveComponent('WalletSection')}>Wallet</li>
-        <li onClick={() => setActiveComponent('SearchSection')}>Search</li>
-        <li onClick={() => setActiveComponent('BuySellSection')}>Buy/Sell</li>
-        <li onClick={() => setActiveComponent('TransactionsSection')}>Transactions</li>
-        <li onClick={() => setActiveComponent('WatchlistSection')}>Watchlist</li>
-      </ul>
-    </nav>
+            <ul>
+              <li onClick={() => setActiveComponent('WalletSection')}>Wallet</li>
+              <li onClick={() => setActiveComponent('SearchSection')}>Search</li>
+              <li onClick={() => setActiveComponent('BuySellSection')}>Buy/Sell</li>
+              <li onClick={() => setActiveComponent('TransactionsSection')}>Transactions</li>
+              <li onClick={() => setActiveComponent('WatchlistSection')}>Watchlist</li>
+            </ul>
+          </nav>
         </div>
       </header>
       {id ? (
         <div className="container10">
           <div id="hero" className="hero">
             {loading ? (
-              <LoadingSpinner /> // Conditionally render the loading spinner
+              <LoadingSpinner />
             ) : (
               renderActiveComponent()
             )}

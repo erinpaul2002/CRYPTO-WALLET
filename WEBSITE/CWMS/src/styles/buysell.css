@@ -1,65 +1,109 @@
 /* Add this to your existing CSS */
-.page1{
-background-color: #000000;
-color:#fff
+.page1 {
+  background-color: #121212;
+  color: #ffea00;
+  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
+
 .buysell-list {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .crypto1 {
-    background: linear-gradient(to right, #021658, rgb(105, 20, 99)); /* Gradient background */
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .crypto1:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased box shadow on hover */
-  }
-  
-  .crypto1 form {
-    display: flex;
-    flex-direction: column;
-    padding-top: 10px;
-    align-items: center;
-    background-color: #000000;
-    color: #fff;
-  }
-  
- .crypto1 select,
-  input[type="text"],
-  input[type="number"],
-  button[type="submit"] {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #f8f4f4;
-    background-color: #dbd7d7;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  select {
-    width: 250px;
-  }
-  
-  input[type="text"] {
-    width: 250px;
-  }
-  
-  input[type="number"] {
-    width: 150px;
-  }
-  
- .crypto1 button[type="submit"] {
-    background-color: #000000;
-    color: #bab9b9;
-    cursor: pointer;
-  }
-  
- .crypto1 button[type="submit"]:hover {
-    background-color: #5b0052;
-  }
-  
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+}
+
+.crypto1 {
+  background: linear-gradient(135deg, #2a2a72, #009ffd);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 500px;
+}
+
+.crypto1:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.crypto1 form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.crypto1 select,
+.crypto1 input[type="text"],
+.crypto1 input[type="number"],
+.crypto1 button[type="submit"] {
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.crypto1 select,
+.crypto1 input[type="text"],
+.crypto1 input[type="number"] {
+  background-color: #2a2a2a;
+  color: #ffffff;
+}
+
+.crypto1 select:focus,
+.crypto1 input[type="text"]:focus,
+.crypto1 input[type="number"]:focus {
+  background-color: #3a3a3a;
+  outline: none;
+}
+
+.crypto1 button[type="submit"] {
+  background-color: #009ffd;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.crypto1 button[type="submit"]:hover {
+  background-color: #007bbd;
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #009ffd;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #007bbd;
+  transform: translateY(-3px);
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ffffff;
+}

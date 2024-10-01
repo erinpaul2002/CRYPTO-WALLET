@@ -1,5 +1,5 @@
-/* card.css */
-.card.premium-card {
+/* searchsection.css */
+.search-card.search-premium-card {
   width: 350px;
   height: 200px;
   background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
@@ -12,26 +12,26 @@
   overflow: hidden;
 }
 
-.card-header {
+.search-card-header {
   margin-left: 20%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.view-title {
+.search-title {
   font-size: 1.5em;
   margin: 0;
 }
 
-.card-body {
+.search-card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
 
-.wallet-chip {
+.search-chip {
   width: 50px;
   height: 35px;
   background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
@@ -41,11 +41,22 @@
   left: 20px;
 }
 
-.view-button {
+.search-button {
   position: relative;
   align-self: center;
-  margin-top: auto;
+  margin-top: 10%;
   width: 40%;
   z-index: 10; /* Ensure the button is on top */
   cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+  background-color: #fd6e00;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #00bd2c;
 }
