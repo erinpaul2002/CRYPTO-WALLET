@@ -43,20 +43,20 @@ const AdminDash = ({ token }) => {
   return (
     <div>
       <header>
-        <nav className='admin-nav'>
-          <div className="navbar">
+        <nav className='admin-dash-nav'>
+          <div className="admin-dash-navbar">
             <h1>ADMIN DASHBOARD</h1>
-            <div className="nav-links">
+            <div className="admin-dash-nav-links">
               <a onClick={() => setActiveComponent('add')}>Add Crypto</a>
               <a onClick={() => setActiveComponent('view')}>View Crypto</a>
               <a onClick={() => setActiveComponent('update')}>Update Crypto</a>
               <a onClick={() => setActiveComponent('delete')}>Delete Crypto</a>
-              <button id="#logout" onClick={handleLogout}>Logout</button>
+              <button id="admin-dash-logout" onClick={handleLogout}>Logout</button>
             </div>
           </div>
         </nav>
       </header>
-      <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '10% 0 0 0' }}>
+      <div className="admin-dash-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '10% 0 0 0' }}>
         {loading ? (
           <LoadingSpinner /> // Conditionally render the loading spinner
         ) : (

@@ -1,6 +1,6 @@
 /* adminlogin.css */
 
-.body2 {
+.admin-body {
   margin: 0;
   padding: 0;
   display: flex;
@@ -10,7 +10,7 @@
   background: linear-gradient(to right, #c70848, rgb(210, 4, 158));
 }
 
-#login-form {
+.admin-login-form {
   max-width: 400px;
   width: 100%;
   background: linear-gradient(to bottom, rgb(253, 253, 253), #e6e6e6);
@@ -20,24 +20,24 @@
   transition: box-shadow 0.3s ease;
 }
 
-#login-form:hover {
+.admin-login-form:hover {
   box-shadow: 0px 0px 40px rgba(10, 10, 10, 0.5); /* Increased box shadow on hover */
 }
 
-#login-form h1 {
+.admin-login-form h1 {
   font-size: 24px;
   text-align: center;
   margin-bottom: 15px; /* Increased margin-bottom for better spacing */
   color: #333; /* Changed text color for better readability */
 }
 
-#login-form form {
+.admin-login-form form {
   display: flex;
   flex-direction: column;
   align-items: center; /* Centered form items */
 }
 
-#login-form input {
+.admin-login-form input {
   margin: 10px 0;
   padding: 12px; /* Increased padding for better input appearance */
   border: 1px solid #ccc; /* Changed border color for better contrast */
@@ -46,7 +46,7 @@
   box-sizing: border-box;
 }
 
-#login-form input[type="submit"] {
+.admin-login-form input[type="submit"] {
   background: linear-gradient(to bottom, rgb(21, 0, 7), #050505);
   color: #fff;
   border: none;
@@ -58,11 +58,11 @@
   box-sizing: border-box;
 }
 
-#login-form input[type="submit"]:hover {
+.admin-login-form input[type="submit"]:hover {
   background: linear-gradient(to right, #fb49ae, #7e88f9);
 }
 
-#login-form a {
+.admin-login-form a {
   margin-top: 15px; /* Increased margin-top for better spacing */
   text-align: center;
   color: #555; /* Changed text color for better contrast */
@@ -72,6 +72,6 @@
   display: block; /* Ensured the link is a block element for better spacing */
 }
 
-#login-form a:hover {
+.admin-login-form a:hover {
   color: #c70848;
 }

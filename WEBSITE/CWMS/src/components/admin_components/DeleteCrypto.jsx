@@ -67,14 +67,14 @@ const DeleteCrypto = () => {
   };
 
   return (
-    <div className={`delete-crypto-container ${status ? (status.success ? 'success' : 'error') : ''}`}>
+    <div className={`admin-delete-crypto-container ${status ? (status.success ? 'admin-success' : 'admin-error') : ''}`}>
       {loading ? (
         <LoadingSpinner /> // Conditionally render the loading spinner
       ) : status ? (
-        <div className={`status-message ${status.success ? '' : 'error'}`}>
-          {status.success ? <FaCheckCircle className="success-icon" /> : <FaTimesCircle className="error-icon" />}
+        <div className={`admin-status-message ${status.success ? '' : 'admin-error'}`}>
+          {status.success ? <FaCheckCircle className="admin-success-icon" /> : <FaTimesCircle className="admin-error-icon" />}
           <span>{status.message}</span>
-          <button className="reset-button" onClick={handleReset}>
+          <button className="admin-reset-button" onClick={handleReset}>
             <FaTrashAlt style={{ marginRight: '8px' }} />
             Delete Another Cryptocurrency
           </button>
@@ -82,7 +82,7 @@ const DeleteCrypto = () => {
       ) : (
         <>
           <h2>Delete Cryptocurrency</h2>
-          <div className="delete-crypto-fields">
+          <div className="admin-delete-crypto-fields">
             <select onChange={(e) => setSelectedCrypto(e.target.value)} value={selectedCrypto}>
               <option value="">Select Cryptocurrency to Delete</option>
               {cryptocurrencies.map((crypto) => (

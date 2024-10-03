@@ -40,13 +40,13 @@ const ViewCrypto = () => {
     : [];
 
   return (
-    <div className="crypto-container">
+    <div className="admin-crypto-container">
       <h2>View Cryptos Available</h2>
-      <div className="search-container">
+      <div className="admin-search-container">
         <select
           value={selectedCrypto}
           onChange={handleSelectChange}
-          className="search-select"
+          className="admin-search-select"
         >
           <option value="">Select a cryptocurrency</option>
           {cryptos.map((crypto) => (
@@ -60,13 +60,13 @@ const ViewCrypto = () => {
         <LoadingSpinner /> // Conditionally render the loading spinner
       ) : (
         filteredCryptos.length > 0 && (
-          <div className="crypto-grid">
+          <div className="admin-crypto-grid">
             {filteredCryptos.map((crypto, index) => (
-              <div key={index} className="crypto-card">
-                <p className="crypto-name">Name: {crypto.cryptoname}</p>
-                <p className="crypto-symbol">Symbol: {crypto.symbol}</p>
-                <p className="crypto-price">Price: ${crypto.cryptoprice}</p>
-                <p className="crypto-supply">Supply: {crypto.supply}</p>
+              <div key={index} className="admin-crypto-card">
+                <p className="admin-crypto-name">Name: {crypto.cryptoname}</p>
+                <p className="admin-crypto-symbol">Symbol: {crypto.symbol}</p>
+                <p className="admin-crypto-price">Price: ${crypto.cryptoprice}</p>
+                <p className="admin-crypto-supply">Supply: {crypto.supply}</p>
               </div>
             ))}
           </div>

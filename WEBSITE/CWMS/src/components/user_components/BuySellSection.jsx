@@ -6,15 +6,15 @@ const BuySellSection = ({ user }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="buysell-card buysell-premium-card">
-      <div className="buysell-card-header">
-        <h2 className="buysell-title">Buy/Sell Cryptocurrencies</h2>
+    <div className="user-buysell-card user-buysell-premium-card">
+      <div className="user-buysell-card-header">
+        <h2 className="user-buysell-title">Buy/Sell Cryptocurrencies</h2>
       </div>
-      <div className="buysell-card-body">
-        <div className="buysell-card-info">
-          <p className="buysell-info">Manage your cryptocurrency transactions here.</p>
+      <div className="user-buysell-card-body">
+        <div className="user-buysell-card-info">
+          <p className="user-buysell-info">Manage your cryptocurrency transactions here.</p>
         </div>
-        <button onClick={() => navigate('/buysell', { state: { user } })} className="buysell-button">View</button>
+        <button onClick={() => navigate('/buysell', { state: { user } })} className="user-buysell-button">View</button>
       </div>
     </div>
   );

@@ -1,105 +1,101 @@
 /* General Styles */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-  }
-  
-  /* Header Styles */
-  .header1 {
-    background-color: #282c34;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .header1 .logo h1 {
-    margin: 0;
-    font-size: 2em;
-  }
-  
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
 
-  /* Container Styles */
-  .container10 {
-    background: linear-gradient(to right, #e600ff, #ff4d88);
-    padding: auto;
-    width: 100vw;
-    
-    height: 100vh;
-    margin: auto;
-    position: fixed;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    
-    overflow: hidden;
-  }
-  
-  /* Card Styles */
-  .card {
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    margin: 20px 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
-  }
-  
-  .card h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    font-size: 16px;
-    margin: 5px 0;
-  }
-  
-  /* Button Styles */
-  .view-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #6a1b9a;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-  }
-  
-  .view-button:hover {
-    background-color: #4a148c;
-  }
-  
-  
-  /* Footer Styles */
-  .footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #282c34;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-  }
+/* Header Styles */
+.user-header {
+  background-color: #282c34;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
 
-  .hero{
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-  }
-  /* Navbar.css */
+.user-header .user-logo h1 {
+  margin: 0;
+  font-size: 2em;
+}
 
+/* Container Styles */
+.user-container {
+  background: linear-gradient(to right, #e600ff, #ff4d88);
+  padding: auto;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+}
+
+/* Card Styles */
+.user-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 20px 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.user-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.user-card p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+/* Button Styles */
+.user-view-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #6a1b9a;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.user-view-button:hover {
+  background-color: #4a148c;
+}
+
+/* Footer Styles */
+.user-footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #282c34;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.user-hero {
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+/* Navbar.css */
 .user-nav {
   background-color: rgb(0, 0, 0);
   margin-top: 1%;

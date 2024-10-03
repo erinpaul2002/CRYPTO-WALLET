@@ -8,15 +8,15 @@ function SignUpForm() {
   const navigate = useNavigate();
   const [ustate, setUstate] = useState({
     firstname: '',
-    lastname:'',
+    lastname: '',
     email: '',
     password: '',
-    address:'',
-    dateofbirth:'',
-    country:'',
-    state:'',
-    pincode:'',
-    phoneno:''
+    address: '',
+    dateofbirth: '',
+    country: '',
+    state: '',
+    pincode: '',
+    phoneno: ''
   });
 
   const handleChange = (evt) => {
@@ -30,7 +30,8 @@ function SignUpForm() {
   const handleOnSubmit = async (evt) => {
     evt.preventDefault();
 
-    const { firstname,
+    const {
+      firstname,
       lastname,
       dateofbirth,
       email,
@@ -40,8 +41,9 @@ function SignUpForm() {
       country,
       state,
       pincode,
-       } = ustate;
-       alert(`You are signing up with:
+    } = ustate;
+
+    alert(`You are signing up with:
        First Name: ${firstname},
        Last Name: ${lastname},
        Date of Birth: ${dateofbirth},
@@ -53,34 +55,34 @@ function SignUpForm() {
        Email: ${email},
        Password: ${password}
      `);
-    
-    try{
-      const { data, error } = await supabase.auth.signUp({
-        email:email,
-        password: password,
-        
-    })
 
-    const { err } = await supabase
-    .from('user')
-    .insert({
-      userid :data.user.id,
-      firstname :firstname,
-      lastname :lastname,
-      dateofbirth :dateofbirth,
-      phoneno :phoneno,
-      address :address,
-      country :country,
-      state :state,
-      pincode :pincode
-      })
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+      });
+
+      const { err } = await supabase
+        .from('user')
+        .insert({
+          userid: data.user.id,
+          firstname: firstname,
+          lastname: lastname,
+          dateofbirth: dateofbirth,
+          phoneno: phoneno,
+          address: address,
+          country: country,
+          state: state,
+          pincode: pincode
+        });
+
       if (err) {
         throw err;
       }
-    if (error) {
-      throw error;
-    }
-    const { walletError } = await supabase
+      if (error) {
+        throw error;
+      }
+      const { walletError } = await supabase
         .from('wallet')
         .insert({
           walletid: uuidv4(),
@@ -94,11 +96,10 @@ function SignUpForm() {
         throw walletError;
       }
 
-    navigate('/dashboard', {state: data})
-    }catch(error){
-console.error('Error signing up:', error.message);
+      navigate('/dashboard', { state: data });
+    } catch (error) {
+      console.error('Error signing up:', error.message);
     }
-  
 
     for (const key in ustate) {
       setUstate({
@@ -109,26 +110,26 @@ console.error('Error signing up:', error.message);
   };
 
   return (
-    <div className="form-container sign-up-container">
+    <div className="user-form-container user-sign-up-container">
       <form onSubmit={handleOnSubmit}>
         <h1>Create Account</h1>
-        <div style={{display:'flex' ,justifyContent:'space-between', justifyItems:'center'}}>
-        <input
-          type="text"
-          name="firstname"
-          value={ustate.firstname}
-          onChange={handleChange}
-          placeholder="First Name"
-          style={{width:'48%'}}
-        />
-        <input
-          type="text"
-          name="lastname"
-          value={ustate.lastname}
-          onChange={handleChange}
-          placeholder="Last Name"
-          style={{width:'48%'}}
-        />
+        <div style={{ display: 'flex', justifyContent: 'space-between', justifyItems: 'center' }}>
+          <input
+            type="text"
+            name="firstname"
+            value={ustate.firstname}
+            onChange={handleChange}
+            placeholder="First Name"
+            style={{ width: '48%' }}
+          />
+          <input
+            type="text"
+            name="lastname"
+            value={ustate.lastname}
+            onChange={handleChange}
+            placeholder="Last Name"
+            style={{ width: '48%' }}
+          />
         </div>
         <input
           type="email"
@@ -144,8 +145,6 @@ console.error('Error signing up:', error.message);
           onChange={handleChange}
           placeholder="Password"
         />
-        
-        
         <input
           type="text"
           name="address"
@@ -153,51 +152,50 @@ console.error('Error signing up:', error.message);
           onChange={handleChange}
           placeholder="Address"
         />
-         <div style={{display:'flex' ,justifyContent:'space-between', justifyItems:'center'}}>
-        <input
-          type="date"
-          name="dateofbirth"
-          value={ustate.dateofbirth}
-          onChange={handleChange}
-          placeholder="Date of Birth"
-          style={{width:'45%'}}
-        />
-        <input
-          type="tel"
-          name="phoneno"
-          value={ustate.phoneno}
-          onChange={handleChange}
-          placeholder="Phone Number"
-          style={{width:'50%'}}
-        />
+        <div style={{ display: 'flex', justifyContent: 'space-between', justifyItems: 'center' }}>
+          <input
+            type="date"
+            name="dateofbirth"
+            value={ustate.dateofbirth}
+            onChange={handleChange}
+            placeholder="Date of Birth"
+            style={{ width: '45%' }}
+          />
+          <input
+            type="tel"
+            name="phoneno"
+            value={ustate.phoneno}
+            onChange={handleChange}
+            placeholder="Phone Number"
+            style={{ width: '50%' }}
+          />
         </div>
-        <div style={{display:'flex' ,justifyContent:'space-between', justifyItems:'center'}}>
-        <input
-          type="text"
-          name="country"
-          value={ustate.country}
-          onChange={handleChange}
-          placeholder="Country"
-          style={{width:'30%'}}
-        />
-        <input
-          type="text"
-          name="state"
-          value={ustate.state}
-          onChange={handleChange}
-          placeholder="State"
-          style={{width:'30%'}}
-        />
-        <input
-          type="number"
-          name="pincode"
-          value={ustate.pincode}
-          onChange={handleChange}
-          placeholder="Pincode"
-          style={{width:'35%'}}
-        />
+        <div style={{ display: 'flex', justifyContent: 'space-between', justifyItems: 'center' }}>
+          <input
+            type="text"
+            name="country"
+            value={ustate.country}
+            onChange={handleChange}
+            placeholder="Country"
+            style={{ width: '30%' }}
+          />
+          <input
+            type="text"
+            name="state"
+            value={ustate.state}
+            onChange={handleChange}
+            placeholder="State"
+            style={{ width: '30%' }}
+          />
+          <input
+            type="number"
+            name="pincode"
+            value={ustate.pincode}
+            onChange={handleChange}
+            placeholder="Pincode"
+            style={{ width: '35%' }}
+          />
         </div>
-
         <button type="submit">Sign Up</button>
         <Link to="/">Back to Home</Link>
       </form>

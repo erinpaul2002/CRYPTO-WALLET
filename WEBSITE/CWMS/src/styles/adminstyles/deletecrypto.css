@@ -1,6 +1,6 @@
 /* DeleteCrypto.css */
 
-.delete-crypto-container {
+.admin-delete-crypto-container {
   max-width: 450px;
   margin: 40px auto;
   padding: 30px;
@@ -12,9 +12,7 @@
   text-align: center;
 }
 
-
-
-.delete-crypto-container h2 {
+.admin-delete-crypto-container h2 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
@@ -23,13 +21,13 @@
   letter-spacing: 1.5px;
 }
 
-.delete-crypto-fields {
+.admin-delete-crypto-fields {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.delete-crypto-fields select {
+.admin-delete-crypto-fields select {
   width: 100%;
   padding: 12px;
   box-sizing: border-box;
@@ -39,12 +37,12 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.delete-crypto-fields select:focus {
+.admin-delete-crypto-fields select:focus {
   border-color: #007bff;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
 }
 
-.delete-crypto-fields button {
+.admin-delete-crypto-fields button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,34 +56,34 @@
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.delete-crypto-fields button:hover {
+.admin-delete-crypto-fields button:hover {
   background: linear-gradient(135deg, #e53935, #d32f2f);
   transform: translateY(-2px);
 }
 
-.delete-crypto-fields button:active {
+.admin-delete-crypto-fields button:active {
   background: linear-gradient(135deg, #d32f2f, #c62828);
   transform: translateY(0);
 }
 
-.status-message {
+.admin-status-message {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
 
-.success-icon {
+.admin-success-icon {
   font-size: 3rem;
   color: #4caf50;
 }
 
-.error-icon {
+.admin-error-icon {
   color: #f44336;
   font-size: 3rem;
 }
 
-.reset-button {
+.admin-reset-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,12 +97,12 @@
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.reset-button:hover {
+.admin-reset-button:hover {
   background: linear-gradient(135deg, #0056b3, #004494);
   transform: translateY(-2px);
 }
 
-.reset-button:active {
+.admin-reset-button:active {
   background: linear-gradient(135deg, #004494, #003366);
   transform: translateY(0);
 }

@@ -5,13 +5,13 @@ import '../../styles/userstyles/navbar.css';
 
 const Navbar = ({ setActiveComponent }) => {
   return (
-    <nav>
-      <ul>
-        <li onClick={() => setActiveComponent('WalletSection')}>Wallet</li>
-        <li onClick={() => setActiveComponent('SearchSection')}>Search</li>
-        <li onClick={() => setActiveComponent('BuySellSection')}>Buy/Sell</li>
-        <li onClick={() => setActiveComponent('TransactionsSection')}>Transactions</li>
-        <li onClick={() => setActiveComponent('WatchlistSection')}>Watchlist</li>
+    <nav className="user-nav">
+      <ul className="user-nav-list">
+        <li className="user-nav-item" onClick={() => setActiveComponent('WalletSection')}>Wallet</li>
+        <li className="user-nav-item" onClick={() => setActiveComponent('SearchSection')}>Search</li>
+        <li className="user-nav-item" onClick={() => setActiveComponent('BuySellSection')}>Buy/Sell</li>
+        <li className="user-nav-item" onClick={() => setActiveComponent('TransactionsSection')}>Transactions</li>
+        <li className="user-nav-item" onClick={() => setActiveComponent('WatchlistSection')}>Watchlist</li>
       </ul>
     </nav>
   );

@@ -62,8 +62,8 @@ const AdminLogin = ({ setToken }) => {
   };
 
   return (
-    <div className="body2">
-      <div id="login-form">
+    <div className="admin-body">
+      <div className="admin-login-form">
         {loading ? (
           <LoadingSpinner /> // Conditionally render the loading spinner
         ) : (

@@ -1,6 +1,6 @@
 /* AddCrypto.css */
 
-.add-crypto-container {
+.admin-add-crypto-container {
   max-width: 450px;
   margin: 40px auto;
   padding: 30px;
@@ -12,12 +12,12 @@
   text-align: center;
 }
 
-.add-crypto-container:hover {
+.admin-add-crypto-container:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-.add-crypto-container h2 {
+.admin-add-crypto-container h2 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
@@ -26,13 +26,13 @@
   letter-spacing: 1.5px;
 }
 
-.add-crypto-fields {
+.admin-add-crypto-fields {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.add-crypto-fields input {
+.admin-add-crypto-fields input {
   width: 100%;
   padding: 12px;
   font-size: 1rem;
@@ -41,12 +41,12 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.add-crypto-fields input:focus {
+.admin-add-crypto-fields input:focus {
   border-color: #007bff;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
 }
 
-.add-crypto-fields button {
+.admin-add-crypto-fields button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,34 +60,34 @@
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.add-crypto-fields button:hover {
+.admin-add-crypto-fields button:hover {
   background: linear-gradient(135deg, #45a049, #3e8e41);
   transform: translateY(-2px);
 }
 
-.add-crypto-fields button:active {
+.admin-add-crypto-fields button:active {
   background: linear-gradient(135deg, #3e8e41, #367c39);
   transform: translateY(0);
 }
 
-.status-message {
+.admin-status-message {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
 
-.success-icon {
+.admin-success-icon {
   font-size: 3rem;
   color: #4caf50;
 }
 
-.error-icon {
+.admin-error-icon {
   color: #f44336;
   font-size: 3rem;
 }
 
-.reset-button {
+.admin-reset-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,12 +101,12 @@
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.reset-button:hover {
+.admin-reset-button:hover {
   background: linear-gradient(135deg, #0056b3, #004494);
   transform: translateY(-2px);
 }
 
-.reset-button:active {
+.admin-reset-button:active {
   background: linear-gradient(135deg, #004494, #003366);
   transform: translateY(0);
 }

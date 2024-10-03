@@ -17,14 +17,14 @@ const TransactionsSection = ({ user }) => {
   };
 
   return (
-    <div className="transactions-card transactions-premium-card">
+    <div className="user-transactions-card user-transactions-premium-card">
       {loading && <LoadingOverlay />}
-      <div className="transactions-card-header">
-        <h2 className="transactions-title">Recent Transactions</h2>
+      <div className="user-transactions-card-header">
+        <h2 className="user-transactions-title">Recent Transactions</h2>
       </div>
-      <div className="transactions-card-body">
-        <div className="transactions-chip"></div>
-        <button onClick={handleNavigate} className="transactions-view-button">View</button>
+      <div className="user-transactions-card-body">
+        <div className="user-transactions-chip"></div>
+        <button onClick={handleNavigate} className="user-transactions-view-button">View</button>
       </div>
     </div>
   );

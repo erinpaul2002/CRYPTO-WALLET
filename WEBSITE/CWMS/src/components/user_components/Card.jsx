@@ -4,23 +4,23 @@ import PropTypes from 'prop-types';
 import '../../styles/userstyles/card.css'; // Assuming you have a separate CSS file for Card styles
 
 const Card = ({ firstname, walletid, children }) => (
-  <div className="card premium-card">
-    <div className="card-header">
-      <h2 className="card-title">Premium Card</h2>
+  <div className="user-card user-premium-card">
+    <div className="user-card-header">
+      <h2 className="user-card-title">Premium Card</h2>
     </div>
-    <div className="card-body">
+    <div className="user-card-body">
       {firstname && walletid ? (
         <>
-          <div className="card-info">
-            <p className="card-name">{firstname}</p>
-            <p className="card-walletid"></p>
+          <div className="user-card-info">
+            <p className="user-card-name">{firstname}</p>
+            <p className="user-card-walletid">Welcome to CryptoX Wallet</p>
           </div>
-          <div className="card-chip"></div>
+          <div className="user-card-chip"></div>
         </>
       ) : (
         children
       )}
-      <button className="card-button">Click Me</button>
+      {/* <button className="user-card-button">Click Me</button> */}
     </div>
   </div>
 );

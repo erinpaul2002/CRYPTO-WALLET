@@ -1,5 +1,5 @@
-/* walletsection.css */
-.wallet-card.wallet-premium-card {
+/* userwalletsection.css */
+.user-wallet-card.user-wallet-premium-card {
   width: 350px;
   height: 200px;
   background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
@@ -12,44 +12,44 @@
   overflow: hidden;
 }
 
-.wallet-card-header {
+.user-wallet-card-header {
   margin-left: 20%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.wallet-title {
+.user-wallet-title {
   font-size: 1.5em;
   margin: 0;
 }
 
-.wallet-card-body {
+.user-wallet-card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
 
-.wallet-card-info {
+.user-wallet-card-info {
   margin-top: 20px;
 }
 
-.wallet-id {
+.user-wallet-id {
   position: absolute;
   bottom: 20px;
   font-size: 1.2em;
   margin: 0;
 }
 
-.wallet-balance {
+.user-wallet-balance {
   position: absolute;
   font-size: 1em;
   margin: 5px;
   left: 10%;
 }
 
-.wallet-chip {
+.user-wallet-chip {
   width: 50px;
   height: 35px;
   background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
@@ -59,7 +59,7 @@
   left: 20px;
 }
 
-.wallet-card-logo {
+.user-wallet-card-logo {
   width: 60px;
   height: 60px;
   background: url('/path/to/logo.png') no-repeat center center;
@@ -69,23 +69,23 @@
   right: 20px;
 }
 
-.wallet-card-number {
+.user-wallet-card-number {
   font-size: 1.2em;
   letter-spacing: 2px;
   margin: 20px 0;
 }
 
-.wallet-card-expiry {
+.user-wallet-card-expiry {
   font-size: 0.9em;
   margin-top: 10px;
 }
 
-.wallet-card-holder {
+.user-wallet-card-holder {
   font-size: 1em;
   margin-top: 5px;
 }
 
-.wallet-button {
+.user-wallet-button {
   position: absolute;
   right: 5%;
   top: 20%;
@@ -101,8 +101,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.wallet-button:hover {
+.user-wallet-button:hover {
   background-color: #00ce4f;
   color: black;
-  
 }

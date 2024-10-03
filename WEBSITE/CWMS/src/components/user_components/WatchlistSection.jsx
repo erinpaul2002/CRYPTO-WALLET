@@ -17,14 +17,14 @@ const WatchlistSection = ({ user }) => {
   };
 
   return (
-    <div className="watchlist-card watchlist-premium-card">
+    <div className="user-watchlist-card user-watchlist-premium-card">
       {loading && <LoadingOverlay />}
-      <div className="watchlist-card-header">
-        <h2 className="watchlist-title">WatchList</h2>
+      <div className="user-watchlist-card-header">
+        <h2 className="user-watchlist-title">WatchList</h2>
       </div>
-      <div className="watchlist-card-body">
-        <div className="watchlist-chip"></div>
-        <button onClick={handleNavigate} className="watchlist-button">View</button>
+      <div className="user-watchlist-card-body">
+        <div className="user-watchlist-chip"></div>
+        <button onClick={handleNavigate} className="user-watchlist-button">View</button>
       </div>
     </div>
   );

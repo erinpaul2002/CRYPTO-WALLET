@@ -97,14 +97,14 @@ const CryptoUpdate = () => {
   };
 
   return (
-    <div className={`crypto-update-container ${status ? (status.success ? 'success' : 'error') : ''}`}>
+    <div className={`admin-crypto-update-container ${status ? (status.success ? 'admin-success' : 'admin-error') : ''}`}>
       {loading ? (
         <LoadingSpinner /> // Conditionally render the loading spinner
       ) : status ? (
-        <div className={`status-message ${status.success ? '' : 'error'}`}>
-          {status.success ? <FaCheckCircle className="success-icon" /> : <FaTimesCircle className="error-icon" />}
+        <div className={`admin-status-message ${status.success ? '' : 'admin-error'}`}>
+          {status.success ? <FaCheckCircle className="admin-success-icon" /> : <FaTimesCircle className="admin-error-icon" />}
           <span>{status.message}</span>
-          <button className="reset-button" onClick={handleReset}>
+          <button className="admin-reset-button" onClick={handleReset}>
             <FaSyncAlt style={{ marginRight: '8px' }} />
             Update Another Cryptocurrency
           </button>
@@ -112,7 +112,7 @@ const CryptoUpdate = () => {
       ) : (
         <>
           <h2>Update Cryptocurrency Data</h2>
-          <div className="update-fields">
+          <div className="admin-update-fields">
             <select name="cryptoid" onChange={handleChange} value={cryptoUpdate.cryptoid}>
               <option value="">Select a cryptocurrency</option>
               {cryptoList.map((crypto) => (

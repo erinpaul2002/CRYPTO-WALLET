@@ -1,6 +1,6 @@
 /* updatecrypto.css */
 
-.crypto-update-container {
+.admin-crypto-update-container {
   max-width: 450px;
   margin-top: 20px;
   margin-bottom: 100px;
@@ -13,8 +13,7 @@
   text-align: center;
 }
 
-
-.crypto-update-container h2 {
+.admin-crypto-update-container h2 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
@@ -22,6 +21,7 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
+
 /* Ensure the dropdown menu has a fixed width */
 select[name="cryptoid"] {
   width: 100%; /* Adjust the width as needed */
@@ -51,10 +51,9 @@ select[name="cryptoid"]:focus {
   outline: none;
 }
 
-
-.update-fields select,
-.update-fields input,
-.update-fields button {
+.admin-update-fields select,
+.admin-update-fields input,
+.admin-update-fields button {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -63,47 +62,47 @@ select[name="cryptoid"]:focus {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.update-fields select:focus,
-.update-fields input:focus {
+.admin-update-fields select:focus,
+.admin-update-fields input:focus {
   border-color: #007bff;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
 }
 
-.update-fields button {
+.admin-update-fields button {
   background-color: #007bff;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.update-fields button:hover {
+.admin-update-fields button:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
 }
 
-.update-fields button:active {
+.admin-update-fields button:active {
   background-color: #004494;
   transform: translateY(0);
 }
 
-.status-message {
+.admin-status-message {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
 
-.success-icon {
+.admin-success-icon {
   font-size: 3rem;
   color: #4caf50;
 }
 
-.error-icon {
+.admin-error-icon {
   color: #f44336;
   font-size: 3rem;
 }
 
-.reset-button {
+.admin-reset-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,14 +116,12 @@ select[name="cryptoid"]:focus {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.reset-button:hover {
+.admin-reset-button:hover {
   background: linear-gradient(135deg, #0056b3, #004494);
   transform: translateY(-2px);
 }
 
-.reset-button:active {
+.admin-reset-button:active {
   background: linear-gradient(135deg, #004494, #003366);
   transform: translateY(0);
 }
-
-

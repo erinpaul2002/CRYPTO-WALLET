@@ -83,7 +83,7 @@ const Dashboard = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [id, user.id]);
 
   const handleLogout = () => {
     setLoading(true);

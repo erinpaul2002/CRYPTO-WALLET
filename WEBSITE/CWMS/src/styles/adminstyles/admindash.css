@@ -1,75 +1,75 @@
 /* Basic reset for margin and padding */
 * {
-    margin: 0;
-    padding:  0;
-    box-sizing: border-box;
-  }
-  
-  /* Styles for the header and navbar */
-  header {
-    background-color: #000000;
-    color: #00f36d;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    top: 0;
-    padding: auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  .admin-nav{
-    margin-top: 0;
-    top:0%;
-    cursor: pointer;
-  }
+  margin: 0;
+  padding:  0;
+  box-sizing: border-box;
+}
 
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    margin-right: 20px;
-    transition: color 0.3s ease;
-  }
+/* Styles for the header and navbar */
+header {
+  background-color: #000000;
+  color: #00f36d;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  top: 0;
+  padding: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.admin-dash-nav {
+  margin-top: 0;
+  top:0%;
+  cursor: pointer;
+}
 
-  .nav-links a:hover {
-    color: #ffcc00;
-  }
 
-   
-  #logout button {
-    background-color: #0077ff;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-  }
+.admin-dash-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-dash-nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  transition: color 0.3s ease;
+}
+
+.admin-dash-nav-links a:hover {
+  color: #ffcc00;
+}
+
+ 
+#admin-dash-logout {
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+#admin-dash-logout:hover {
+  background-color: #b30000;
+  transition-delay: 5ms;
+  transition: ease-in-out;
+}
+
+.admin-dash-container {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 10% 0 10% 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   
-  #logout button:hover {
-    background-color: #b30000;
-    transition-delay: 5ms;
-    transition: ease-in-out;
-  }
-  
-  .container {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 10% 0 10% 0;
-    padding: 20px;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
-  }
-  
-  .container:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  }
+}
+
+.admin-dash-container:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}

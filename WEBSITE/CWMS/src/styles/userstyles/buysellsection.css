@@ -1,5 +1,5 @@
-/* buysellsection.css */
-.buysell-card {
+/* userbuysellsection.css */
+.user-buysell-card.user-buysell-premium-card {
   width: 350px;
   height: 200px;
   background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
@@ -12,40 +12,40 @@
   overflow: hidden;
 }
 
-.buysell-card:hover {
+.user-buysell-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.buysell-card-header {
+.user-buysell-card-header {
   border-bottom: 1px solid #c4bdbd;
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
 
-.buysell-title {
+.user-buysell-title {
   font-size: 24px;
   margin: 0;
-  color:rgb(8, 220, 244)
+  color: rgb(8, 220, 244);
 }
 
-.buysell-card-body {
+.user-buysell-card-body {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.buysell-card-info {
+.user-buysell-card-info {
   margin-bottom: 20px;
 }
 
-.buysell-info {
+.user-buysell-info {
   font-size: 18px;
   margin: 0;
   color: wheat;
 }
 
-.buysell-button {
+.user-buysell-button {
   background-color: #fd6e00;
   color: #ffffff;
   border: none;
@@ -56,7 +56,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.buysell-button:hover {
+.user-buysell-button:hover {
   background-color: #00bd2f;
   transform: translateY(-3px);
 }

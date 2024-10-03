@@ -19,14 +19,14 @@ const SearchSection = ({ user }) => {
   };
 
   return (
-    <div className="search-card search-premium-card">
+    <div className="user-search-card user-search-premium-card">
       {isLoading && <LoadingOverlay />}
-      <div className="search-card-header">
-        <h2 className="search-title">View Crypto</h2>
+      <div className="user-search-card-header">
+        <h2 className="user-search-title">View Crypto</h2>
       </div>
-      <div className="search-card-body">
-        <div className="search-chip"></div>
-        <button onClick={handleViewClick} className="search-button">View</button>
+      <div className="user-search-card-body">
+        <div className="user-search-chip"></div>
+        <button onClick={handleViewClick} className="user-search-button">View</button>
       </div>
     </div>
   );

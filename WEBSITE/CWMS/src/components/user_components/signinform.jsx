@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {supabase} from '../../config/supabaseClient'
+import { supabase } from '../../config/supabaseClient';
 import { Link } from 'react-router-dom';
+
 function SignInForm() {
-  const navigate =useNavigate();
+  const navigate = useNavigate();
 
   const [state, setState] = useState({
     email: '',
@@ -35,9 +36,8 @@ function SignInForm() {
       }
 
       console.log('Sign-in successful:', data);
-      const userId = data.user.id
-      // console.log(userId)
-      navigate("/dashboard", { state: data }); 
+      const userId = data.user.id;
+      navigate("/dashboard", { state: data });
     } catch (error) {
       console.error('Error signing in:', error.message);
       alert('Invalid email or password. Please try again.');
@@ -51,10 +51,9 @@ function SignInForm() {
   };
 
   return (
-    <div className="form-container sign-in-container">
+    <div className="user-form-container user-sign-in-container">
       <form onSubmit={handleOnSubmit}>
         <h1>Sign in</h1>
-        
         <input
           type="email"
           placeholder="Email"
@@ -69,7 +68,6 @@ function SignInForm() {
           value={state.password}
           onChange={handleChange}
         />
-
         <button type="submit">Sign In</button>
         <Link to="/">Back to Home</Link>
       </form>

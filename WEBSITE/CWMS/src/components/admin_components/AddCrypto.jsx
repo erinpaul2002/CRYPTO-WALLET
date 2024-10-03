@@ -70,14 +70,14 @@ const AddCrypto = () => {
   };
 
   return (
-    <div className={`add-crypto-container ${status ? (status.success ? 'success' : 'error') : ''}`}>
+    <div className={`admin-add-crypto-container ${status ? (status.success ? 'success' : 'error') : ''}`}>
       {loading ? (
         <LoadingSpinner /> // Conditionally render the loading spinner
       ) : status ? (
-        <div className="status-message">
-          {status.success ? <FaCheckCircle className="success-icon" /> : <FaTimesCircle className="error-icon" />}
+        <div className="admin-status-message">
+          {status.success ? <FaCheckCircle className="admin-success-icon" /> : <FaTimesCircle className="admin-error-icon" />}
           <span>{status.message}</span>
-          <button className="reset-button" onClick={handleReset}>
+          <button className="admin-reset-button" onClick={handleReset}>
             <FaPlusCircle style={{ marginRight: '8px' }} />
             Add Another Cryptocurrency
           </button>
@@ -85,7 +85,7 @@ const AddCrypto = () => {
       ) : (
         <>
           <h2>Add New Cryptocurrency</h2>
-          <div className="add-crypto-fields">
+          <div className="admin-add-crypto-fields">
             <input
               type="text"
               name="cryptoname"

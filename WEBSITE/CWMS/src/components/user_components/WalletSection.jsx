@@ -6,21 +6,21 @@ const WalletSection = ({ user, wallet }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="wallet-card wallet-premium-card">
-      <div className="wallet-card-header">
-        <h2 className="wallet-title">Wallet</h2>
+    <div className="user-wallet-card user-wallet-premium-card">
+      <div className="user-wallet-card-header">
+        <h2 className="user-wallet-title">Wallet</h2>
       </div>
-      <div className="wallet-card-body">
+      <div className="user-wallet-card-body">
         {wallet ? (
           <>
-            <div className="wallet-card-info">
-              <p className="wallet-id"><strong>Address:</strong> {wallet.walletid}</p>
-              <p className="wallet-balance"><strong>Balance:</strong> {wallet.balance}</p>
+            <div className="user-wallet-card-info">
+              <p className="user-wallet-id"><strong>Address:</strong> {wallet.walletid}</p>
+              <p className="user-wallet-balance"><strong>Balance:</strong> {wallet.balance}</p>
             </div>
-            <div className="wallet-chip"></div>
+            <div className="user-wallet-chip"></div>
           </>
         ) : ""}
-        <button onClick={() => navigate('/wallet', { state: { user, wallet } })} className="wallet-button">View</button>
+        <button onClick={() => navigate('/wallet', { state: { user, wallet } })} className="user-wallet-button">View</button>
       </div>
     </div>
   );

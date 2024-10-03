@@ -1,23 +1,23 @@
-.crypto-container {
+.admin-crypto-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   font-family: 'Arial', sans-serif;
 }
 
-h2 {
+.admin-crypto-container h2 {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
 }
 
-.search-container {
+.admin-search-container {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
-.search-select {
+.admin-search-select {
   width: 300px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -25,7 +25,7 @@ h2 {
   font-size: 16px;
 }
 
-.crypto-grid {
+.admin-crypto-grid {
   display: flex;
   gap: 20px;
   padding: 20px;
@@ -37,20 +37,19 @@ h2 {
   overflow-x: auto;
   scroll-behavior: smooth;
   width: 400px;
-
 }
 
-.crypto-grid::-webkit-scrollbar {
+.admin-crypto-grid::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
 }
 
-.crypto-grid {
+.admin-crypto-grid {
   -ms-overflow-style: none;  /* Hide scrollbar for Internet Explorer and Edge */
   scrollbar-width: none;  /* Hide scrollbar for Firefox */
 }
 
-.crypto-card {
-  margin: auto ;
+.admin-crypto-card {
+  margin: auto;
   min-width: 250px;
   background-color: #fff;
   border: 1px solid #e0e0e0;
@@ -61,30 +60,30 @@ h2 {
   scroll-snap-align: center;
 }
 
-.crypto-card:hover {
+.admin-crypto-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.crypto-name, .crypto-symbol, .crypto-price, .crypto-supply {
+.admin-crypto-name, .admin-crypto-symbol, .admin-crypto-price, .admin-crypto-supply {
   margin: 10px 0;
   font-size: 18px;
   color: #333;
 }
 
-.crypto-name {
+.admin-crypto-name {
   font-weight: bold;
   color: #007bff;
 }
 
-.crypto-symbol {
+.admin-crypto-symbol {
   color: #555;
 }
 
-.crypto-price {
+.admin-crypto-price {
   color: #28a745;
 }
 
-.crypto-supply {
+.admin-crypto-supply {
   color: #e54414;
 }

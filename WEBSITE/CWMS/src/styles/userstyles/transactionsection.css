@@ -1,5 +1,5 @@
-/* transactionsection.css */
-.transactions-card.transactions-premium-card {
+/* usertransactionsection.css */
+.user-transactions-card.user-transactions-premium-card {
   width: 350px;
   height: 200px;
   background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
@@ -12,26 +12,26 @@
   overflow: hidden;
 }
 
-.transactions-card-header {
+.user-transactions-card-header {
   margin-left: 20%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.transactions-title {
+.user-transactions-title {
   font-size: 1.5em;
   margin: 0;
 }
 
-.transactions-card-body {
+.user-transactions-card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
 
-.transactions-chip {
+.user-transactions-chip {
   width: 50px;
   height: 35px;
   background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
@@ -41,7 +41,7 @@
   left: 20px;
 }
 
-.transactions-view-button {
+.user-transactions-view-button {
   position: absolute;
   left: 30%;
   top: 50%;
@@ -57,7 +57,6 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.transactions-view-button:hover {
+.user-transactions-view-button:hover {
   background-color: #00bd4f;
-  
 }
