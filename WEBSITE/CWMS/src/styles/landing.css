@@ -54,6 +54,7 @@
     margin: 10px;
     font-size: 16px;
     transition: background 0.3s ease; /* Transition for background */
+    width: 25%;
   }
   
   .button-container button:hover {

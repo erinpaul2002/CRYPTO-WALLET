@@ -41,7 +41,7 @@ const AdminDash = ({ token }) => {
   };
 
   return (
-    <div>
+    <div className='admin-dash'>
       <header>
         <nav className='admin-dash-nav'>
           <div className="admin-dash-navbar">
@@ -56,7 +56,7 @@ const AdminDash = ({ token }) => {
           </div>
         </nav>
       </header>
-      <div className="admin-dash-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '10% 0 0 0' }}>
+      <div className="admin-dash-container" >
         {loading ? (
           <LoadingSpinner /> // Conditionally render the loading spinner
         ) : (

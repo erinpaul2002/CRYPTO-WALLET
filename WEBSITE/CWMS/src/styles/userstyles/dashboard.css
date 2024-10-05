@@ -21,7 +21,7 @@ body {
 }
 
 /* Container Styles */
-.user-container {
+.user-dash-container {
   background: linear-gradient(to right, #e600ff, #ff4d88);
   padding: auto;
   width: 100vw;
@@ -93,6 +93,10 @@ body {
   align-items: center;
   text-align: center;
   color: #fff;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
 }
 
 /* Navbar.css */

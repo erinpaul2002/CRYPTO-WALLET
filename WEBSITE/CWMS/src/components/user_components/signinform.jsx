@@ -53,7 +53,7 @@ function SignInForm() {
   return (
     <div className="user-form-container user-sign-in-container">
       <form onSubmit={handleOnSubmit}>
-        <h1>Sign in</h1>
+        {/* <h1>Sign in</h1> */}
         <input
           type="email"
           placeholder="Email"

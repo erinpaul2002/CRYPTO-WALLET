@@ -113,8 +113,8 @@ const Dashboard = () => {
 
   return (
     <div>
-      <header className="header1" style={{ position: 'fixed', width: '100%' }}>
-        <div className="logo">
+      <header className="user-header" style={{ position: 'fixed', width: '100%' }}>
+        <div className="user-logo">
           <h1>Crypto X</h1>
           <nav className='user-nav'>
             <ul>
@@ -128,15 +128,15 @@ const Dashboard = () => {
         </div>
       </header>
       {id ? (
-        <div className="container10">
-          <div id="hero" className="hero">
+        <div className="user-dash-container">
+          <div id="hero" className="user-hero">
             {loading ? (
               <LoadingSpinner />
             ) : (
               renderActiveComponent()
             )}
           </div>
-          <footer className="footer">
+          <footer className="user-footer">
             <p>CryptoX</p>
             <button className='logout-btn' id="#logout" onClick={handleLogout}>Logout</button>
           </footer>

@@ -308,17 +308,17 @@ function CryptoBuySell() {
   };
 
   return (
-    <div className="page1">
-      <button onClick={handleBackToDashboard} className="back-button">Back to Dashboard</button>
+    <div className="page1-user">
+      <button onClick={handleBackToDashboard} className="back-button-user">Back to Dashboard</button>
       <h1>Buy-Sell Cryptocurrencies</h1>
       {notification.message && (
         <div className={`notification ${notification.type}`}>
           {notification.message}
         </div>
       )}
-      <section className="buysell">
-        <div className="buysell-list">
-          <div className="crypto1">
+      <section className="buysell-user">
+        <div className="buysell-list-user">
+          <div className="crypto1-user">
             <form onSubmit={handleSubmit}>
               <select value={crypto} onChange={handleCryptoChange}>
                 <option value="">Select a cryptocurrency</option>
@@ -336,7 +336,7 @@ function CryptoBuySell() {
                 placeholder="Enter the amount"
               />
 
-              <div className="custom-select">
+              <div className="custom-select-user">
                 <select value={action} onChange={handleActionChange}>
                   <option value="">Select an action</option>
                   <option value="buy">Buy</option>

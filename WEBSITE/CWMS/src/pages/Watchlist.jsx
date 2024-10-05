@@ -170,7 +170,7 @@ const Watchlist = () => {
 
   return (
     <div className="watchlist-container">
-      <button className="back-button" onClick={() => navigate('/dashboard', { state: { user } })}>Back to Dashboard</button>
+      <button className="back-btn" onClick={() => navigate('/dashboard', { state: { user } })}>Back to Dashboard</button>
       <h2>My Watchlist</h2>
       <div className="add-crypto">
         <select value={selectedCrypto} onChange={(e) => setSelectedCrypto(e.target.value)}>
@@ -181,7 +181,7 @@ const Watchlist = () => {
             </option>
           ))}
         </select>
-        <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
+        <button className="add-watchlist-btn" onClick={handleAddToWatchlist}>Add to Watchlist</button>
       </div>
       <div className="watchlist-items">
         <h3>Watchlist Items</h3>
@@ -200,7 +200,7 @@ const Watchlist = () => {
                 <td style={{ color: 'black' }}>{item.symbol}</td>
                 <td style={{ color: 'black' }}>{item.cryptoprice}</td>
                 <td>
-                  <button onClick={() => handleDeleteFromWatchlist(item.cryptoid)}>Delete</button>
+                  <button className='delete-btn-user-watchlist' onClick={() => handleDeleteFromWatchlist(item.cryptoid)}>Delete</button>
                 </td>
               </tr>
             ))}

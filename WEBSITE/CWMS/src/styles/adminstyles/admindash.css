@@ -3,6 +3,12 @@
   margin: 0;
   padding:  0;
   box-sizing: border-box;
+  
+}
+.admin-dash{
+background: linear-gradient(to right, #c70848, rgb(210, 4, 158));
+height: 100vh;
+
 }
 
 /* Styles for the header and navbar */
@@ -58,7 +64,7 @@ header {
 
 .admin-dash-container {
   position: absolute;
-  top: 35%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 10% 0 10% 0;

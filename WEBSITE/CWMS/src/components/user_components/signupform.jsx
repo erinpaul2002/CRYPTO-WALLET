@@ -112,7 +112,7 @@ function SignUpForm() {
   return (
     <div className="user-form-container user-sign-up-container">
       <form onSubmit={handleOnSubmit}>
-        <h1>Create Account</h1>
+        {/* <h1>Create Account</h1> */}
         <div style={{ display: 'flex', justifyContent: 'space-between', justifyItems: 'center' }}>
           <input
             type="text"

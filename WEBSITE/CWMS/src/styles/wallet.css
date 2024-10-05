@@ -1,58 +1,144 @@
 /* Wallet.css */
 
-.bodyy {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(to right, #c70848, rgb(210, 4, 158));
-  }
+.bodyy-user {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #c70848, rgb(210, 4, 158));
+}
+
+.wallet1-user {
+  background: linear-gradient(to bottom, #e1dbdb, #e6e6e6); /* Gradient background */
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
   
-  .wallet1 {
-    background: linear-gradient(to bottom, #e1dbdb, #e6e6e6); /* Gradient background */
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    padding: 40px;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-  }
+}
+
+.wallet1-user p{
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.wallet1-user h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+
+.wallet1-actions-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.wallet-actions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  padding: 2%;
+  border-radius: 10px;
   
-  .wallet1 h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .wallet-info {
-    margin-bottom: 20px;
-  }
-  
-  .wallet-info p {
-    font-size: 18px;
-  }
-  
-  .wallet1-actions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .cta-button {
-    display: inline-block;
-    padding: 15px 30px;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 10px;
-    background-color: #007bff; /* Adjusted button color */
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  .cta-button:hover {
-    background-color: #0056b3; /* Adjusted hover color */
-  }
-  
+}
+.wallet-actions div{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.wallet-actions button {
+  background-color: orangered;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+  margin: 10px;
+  width: 40%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wallet-actions button:hover {
+  background-color: #00b306; /* Adjusted hover color */
+}
+
+.crypto-balance-user {
+  margin-bottom: 10px;
+}
+
+.back-button-user {
+  position: absolute;
+  top: 3%;
+  left: 2%;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #009ffd;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-button-user:hover {
+  background-color: #007bbd;
+  transform: translateY(-3px);
+}
+.wallet-info-user{
+  transform: translate(-5%);
+  width: 110%;
+  margin-bottom: 5%;
+}
+
+.crypto-balance-container {
+  max-height: 200px; /* Adjust height as needed */
+  overflow-y: scroll;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+}
+
+.crypto-balance-container::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.crypto-balance-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 10px;
+}
+
+.crypto-balance-user:hover {
+  transform: scale(1.02);
+}
+
+.crypto-balance-user p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.crypto-balance-user strong {
+  color: #333;
+}

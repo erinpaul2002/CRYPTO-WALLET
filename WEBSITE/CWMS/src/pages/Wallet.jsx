@@ -6,11 +6,13 @@ import "../styles/wallet.css";
 function Wallet() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user,wallet } = location.state || {};
+  const { user, wallet } = location.state || {};
   const walletId = wallet.walletid;
   console.log(wallet, user);
 
   const [cryptoDetails, setCryptoDetails] = useState([]);
+  const [addAmount, setAddAmount] = useState(0);
+  const [withdrawAmount, setWithdrawAmount] = useState(0);
 
   useEffect(() => {
     const fetchCryptoDetails = async () => {
@@ -49,30 +51,90 @@ function Wallet() {
   }, [walletId]);
 
   const handleBackToDashboard = () => {
-    navigate('/dashboard', { state: { user,wallet } });
+    navigate('/dashboard', { state: { user, wallet } });
+  };
+
+  const handleAddMoney = async () => {
+    const newBalance = wallet.balance + parseFloat(addAmount);
+    const { error } = await supabase
+      .from('wallet')
+      .update({ balance: newBalance })
+      .eq('walletid', walletId);
+
+    if (error) {
+      console.error('Error adding money:', error.message);
+    } else {
+      wallet.balance = newBalance;
+      setAddAmount(0);
+    }
+  };
+
+  const handleWithdrawMoney = async () => {
+    if (withdrawAmount > wallet.balance) {
+      console.error('Insufficient balance');
+      return;
+    }
+
+    const newBalance = wallet.balance - parseFloat(withdrawAmount);
+    const { error } = await supabase
+      .from('wallet')
+      .update({ balance: newBalance })
+      .eq('walletid', walletId);
+
+    if (error) {
+      console.error('Error withdrawing money:', error.message);
+    } else {
+      wallet.balance = newBalance;
+      setWithdrawAmount(0);
+    }
   };
 
   return (
     <div>
-      <div className='bodyy'>
-        <button onClick={handleBackToDashboard} className="back-button">Back to Dashboard</button>
-        <section className="wallet1">
+      <div className='bodyy-user'>
+        <button onClick={handleBackToDashboard} className="back-button-user">Back to Dashboard</button>
+        <section className="wallet1-user">
           <h2>Your Wallet</h2>
-          <div className="wallet-info">
-            {/* Display other wallet information here */}
-          </div>
-          <div className="wallet1-actions">
-            {/* Add wallet action links here */}
+          <br></br>
+          <p>Total balance: {wallet.balance}</p>          
+          <br></br>
+          <div className="wallet-info-user">
+            <div className="crypto-balance-container">
+              {cryptoDetails.map((crypto, index) => (
+                <div key={index} className="crypto-balance-user">
+                  <p>
+                    <strong>Cryptoname:</strong> {crypto.cryptoname}::<strong>Quantity:</strong> {wallet.quantity[index]}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
           <br></br>
-
-          {cryptoDetails.map((crypto, index) => (
-            <div key={index} className="crypto-balance">
-              <p><strong>Cryptoname:</strong> {crypto.cryptoname}::<strong>Quantity:</strong> {wallet.quantity[index]}</p>
-             
+          <div className="wallet1-actions-user">
+            {/* Add wallet action links here */}
+            <div className="wallet-actions">
+            <div>
+              <input
+                type="number"
+                value={addAmount}
+                onChange={(e) => setAddAmount(e.target.value)}
+                placeholder="Amount to add"
+              />
+              <button onClick={handleAddMoney}>Add Money</button>
             </div>
-          ))}
-          <p>Total balance: {wallet.balance}</p>
+            <div>
+              <input
+                type="number"
+                value={withdrawAmount}
+                onChange={(e) => setWithdrawAmount(e.target.value)}
+                placeholder="Amount to withdraw"
+              />
+              <button onClick={handleWithdrawMoney}>Withdraw Money</button>
+            </div>
+          </div>
+          </div>
+        
+          
         </section>
       </div>
     </div>

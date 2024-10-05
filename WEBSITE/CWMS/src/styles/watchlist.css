@@ -20,7 +20,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 5%;
 }
 
 .add-crypto select {
@@ -29,21 +29,22 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-right: 10px;
+  margin-top: 10px;
 }
 
-.add-crypto button {
+.add-watchlist-btn {
   padding: 10px 20px;
   font-size: 1rem;
   color: #fff;
-  background-color: #007bff;
+  background-color: #ff9100;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.add-crypto button:hover {
-  background-color: #0056b3;
+.add-watchlist-btn:hover {
+  background-color: #4239e2;
 }
 
 .watchlist-items {
@@ -69,7 +70,7 @@ h2 {
 }
 
 .watchlist-items th {
-  background-color: #007bff;
+  background-color: #3f5368;
   color: #fff;
 }
 
@@ -81,7 +82,7 @@ h2 {
   padding: 5px 10px;
   font-size: 0.875rem;
   color: #fff;
-  background-color: #dc3545;
+  background-color: #05b805;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -90,5 +91,21 @@ h2 {
 }
 
 .watchlist-items button:hover {
-  background-color: #c82333;
+  background-color: #c82323;
+  
+}
+
+.back-btn{
+  padding: 5px 10px;
+  font-size: 0.875rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #b30000;
 }
